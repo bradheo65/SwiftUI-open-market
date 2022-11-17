@@ -16,23 +16,40 @@ struct ProductListView: View {
             List {
                 ForEach(productListViewModel.lists, id: \.id) { data in
                     HStack {
-                        Image(data.thumbnail)
-                        
+                        AsyncImage(url: URL(string: data.thumbnail)) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                            case .success(let image):
+                                image.resizable()
+                            case .failure:
+                                Image(systemName: "wifi.slash")
+                            @unknown default:
+                                Image(systemName: "photo")
+                            }
+                        }
+                        .frame(width: 100, height: 100)
+
                         VStack {
                             Text(data.name)
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                                .lineLimit(0)
 
                             Text("\(data.price)")
                                 .frame(maxWidth: .infinity, alignment: .leading)
-
+                                .lineLimit(0)
                         }
+                        .padding()
+        
                         Text("\(data.stock)")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .frame(alignment: .trailing)
                     }
                 }
             }
             .onAppear {
                 productListViewModel.getProduct(page: 1, size: 20)
+                
+                print("onAppear")
             }
             .navigationTitle("List")
         }

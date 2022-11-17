@@ -7,28 +7,20 @@
 
 import SwiftUI
 
-struct Product: Decodable {
-    let id: Int
-    let vendorId: Int
-    let name: String
+struct Product: Codable {
+    let id, vendorID: Int
+    let vendorName, name, pageDescription: String
     let thumbnail: String
     let currency: String
-    let price: Double
-    let bargainPrice: Double
-    let discountedPrice: Double
-    let stock: Int
-    let createdAt: String
-    let issuedAt: String
-}
+    let price, bargainPrice, discountedPrice, stock: Int
+    let createdAt, issuedAt: String
 
-extension Product {
     enum CodingKeys: String, CodingKey {
         case id
-        case vendorId = "vendor_id"
-        case name
-        case thumbnail
-        case currency
-        case price
+        case vendorID = "vendor_id"
+        case vendorName, name
+        case pageDescription = "description"
+        case thumbnail, currency, price
         case bargainPrice = "bargain_price"
         case discountedPrice = "discounted_price"
         case stock

@@ -7,22 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10380E3FB9017EFA1AB2E229 /* Pods_SwiftUI_open_market.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93A299D4A4859603D7989CD /* Pods_SwiftUI_open_market.framework */; };
 		A348D0A12925F278003E8BCB /* SwiftUI_open_marketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0A02925F278003E8BCB /* SwiftUI_open_marketApp.swift */; };
-		A348D0A32925F278003E8BCB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0A22925F278003E8BCB /* ContentView.swift */; };
+		A348D0A32925F278003E8BCB /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0A22925F278003E8BCB /* ProductListView.swift */; };
 		A348D0A52925F279003E8BCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A348D0A42925F279003E8BCB /* Assets.xcassets */; };
 		A348D0A82925F279003E8BCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A348D0A72925F279003E8BCB /* Preview Assets.xcassets */; };
 		A348D0B02925F442003E8BCB /* ProductListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0AF2925F442003E8BCB /* ProductListResponse.swift */; };
 		A348D0B22925F482003E8BCB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0B12925F482003E8BCB /* Product.swift */; };
+		A348D0B42925F668003E8BCB /* ProductAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0B32925F668003E8BCB /* ProductAPI.swift */; };
+		A348D0B72925F9E8003E8BCB /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0B62925F9E8003E8BCB /* ProductListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		382899379A9ABBD69AD782F6 /* Pods-SwiftUI-open-market.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI-open-market.release.xcconfig"; path = "Target Support Files/Pods-SwiftUI-open-market/Pods-SwiftUI-open-market.release.xcconfig"; sourceTree = "<group>"; };
 		A348D09D2925F278003E8BCB /* SwiftUI-open-market.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-open-market.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A348D0A02925F278003E8BCB /* SwiftUI_open_marketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_open_marketApp.swift; sourceTree = "<group>"; };
-		A348D0A22925F278003E8BCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A348D0A22925F278003E8BCB /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		A348D0A42925F279003E8BCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A348D0A72925F279003E8BCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A348D0AF2925F442003E8BCB /* ProductListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListResponse.swift; sourceTree = "<group>"; };
 		A348D0B12925F482003E8BCB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		A348D0B32925F668003E8BCB /* ProductAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAPI.swift; sourceTree = "<group>"; };
+		A348D0B62925F9E8003E8BCB /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
+		AFF9502DEAC56BDBEAC7F0A1 /* Pods-SwiftUI-open-market.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI-open-market.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUI-open-market/Pods-SwiftUI-open-market.debug.xcconfig"; sourceTree = "<group>"; };
+		E93A299D4A4859603D7989CD /* Pods_SwiftUI_open_market.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUI_open_market.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,17 +38,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10380E3FB9017EFA1AB2E229 /* Pods_SwiftUI_open_market.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20B2F228EEB71D598E54FBEB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E93A299D4A4859603D7989CD /* Pods_SwiftUI_open_market.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A2230E5AF13E6ECC5E3C73C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AFF9502DEAC56BDBEAC7F0A1 /* Pods-SwiftUI-open-market.debug.xcconfig */,
+				382899379A9ABBD69AD782F6 /* Pods-SwiftUI-open-market.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A348D0942925F278003E8BCB = {
 			isa = PBXGroup;
 			children = (
 				A348D09F2925F278003E8BCB /* SwiftUI-open-market */,
 				A348D09E2925F278003E8BCB /* Products */,
+				A2230E5AF13E6ECC5E3C73C3 /* Pods */,
+				20B2F228EEB71D598E54FBEB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,9 +83,10 @@
 		A348D09F2925F278003E8BCB /* SwiftUI-open-market */ = {
 			isa = PBXGroup;
 			children = (
-				A348D0AE2925F2C0003E8BCB /* Model */,
 				A348D0A02925F278003E8BCB /* SwiftUI_open_marketApp.swift */,
-				A348D0A22925F278003E8BCB /* ContentView.swift */,
+				A348D0AE2925F2C0003E8BCB /* Model */,
+				A348D0B52925F9CA003E8BCB /* ViewModel */,
+				A348D0A22925F278003E8BCB /* ProductListView.swift */,
 				A348D0A42925F279003E8BCB /* Assets.xcassets */,
 				A348D0A62925F279003E8BCB /* Preview Content */,
 			);
@@ -77,8 +106,17 @@
 			children = (
 				A348D0AF2925F442003E8BCB /* ProductListResponse.swift */,
 				A348D0B12925F482003E8BCB /* Product.swift */,
+				A348D0B32925F668003E8BCB /* ProductAPI.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A348D0B52925F9CA003E8BCB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A348D0B62925F9E8003E8BCB /* ProductListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -88,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A348D0AB2925F279003E8BCB /* Build configuration list for PBXNativeTarget "SwiftUI-open-market" */;
 			buildPhases = (
+				EA35DEC641843F4B8C4EFD78 /* [CP] Check Pods Manifest.lock */,
 				A348D0992925F278003E8BCB /* Sources */,
 				A348D09A2925F278003E8BCB /* Frameworks */,
 				A348D09B2925F278003E8BCB /* Resources */,
+				865AF03390CDE4079335A02D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -146,6 +186,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		865AF03390CDE4079335A02D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftUI-open-market/Pods-SwiftUI-open-market-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftUI-open-market/Pods-SwiftUI-open-market-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftUI-open-market/Pods-SwiftUI-open-market-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA35DEC641843F4B8C4EFD78 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftUI-open-market-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A348D0992925F278003E8BCB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -153,8 +235,10 @@
 			files = (
 				A348D0B02925F442003E8BCB /* ProductListResponse.swift in Sources */,
 				A348D0B22925F482003E8BCB /* Product.swift in Sources */,
-				A348D0A32925F278003E8BCB /* ContentView.swift in Sources */,
+				A348D0B72925F9E8003E8BCB /* ProductListViewModel.swift in Sources */,
+				A348D0A32925F278003E8BCB /* ProductListView.swift in Sources */,
 				A348D0A12925F278003E8BCB /* SwiftUI_open_marketApp.swift in Sources */,
+				A348D0B42925F668003E8BCB /* ProductAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +361,7 @@
 		};
 		A348D0AC2925F279003E8BCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFF9502DEAC56BDBEAC7F0A1 /* Pods-SwiftUI-open-market.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -305,6 +390,7 @@
 		};
 		A348D0AD2925F279003E8BCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 382899379A9ABBD69AD782F6 /* Pods-SwiftUI-open-market.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

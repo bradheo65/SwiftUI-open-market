@@ -7,14 +7,14 @@
 
 import Foundation
 
-class ProductListViewModel {
+class ProductListViewModel: ObservableObject {
     
     lazy var productAPI = ProductAPI()
-    var lists: [Product] = []
+    @Published var lists = [Product]()
     
-    init() {
-        getProduct(page: 1, size: 10)
-    }
+//    init() {
+//        getProduct(page: 1, size: 10)
+//    }
     
     func getProduct(page: Int, size: Int) {
         
@@ -22,7 +22,7 @@ class ProductListViewModel {
             switch isSuccess {
             case true:
                 self.lists = model?.pages ?? []
-                print(self.lists)
+                print(self.lists[0])
 
             case false:
                 print("error")

@@ -9,17 +9,33 @@ import SwiftUI
 
 struct ProductListView: View {
     
-    private let productListViewModel = ProductListViewModel()
+    @ObservedObject private var productListViewModel = ProductListViewModel()
     
     var body: some View {
-        
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach(productListViewModel.lists, id: \.id) { data in
+                    HStack {
+                        Image(data.thumbnail)
+                        
+                        VStack {
+                            Text(data.name)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+
+                            Text("\(data.price)")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+
+                        }
+                        Text("\(data.stock)")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                }
+            }
+            .onAppear {
+                productListViewModel.getProduct(page: 1, size: 20)
+            }
+            .navigationTitle("List")
         }
-        .padding()
     }
 }
 

@@ -56,6 +56,10 @@ struct ProductListView: View {
             .task {
                 productListViewModel.getProduct()
             }
+            .refreshable(action: {
+                await Task.sleep(1_000_000_000)
+                productListViewModel.getProduct()
+            })
             .navigationTitle("List")
             .listStyle(.grouped)
         }

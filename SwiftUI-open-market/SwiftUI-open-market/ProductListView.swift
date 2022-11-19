@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductListView: View {
     
     @ObservedObject private var productListViewModel = ProductListViewModel()
+    var page = 20
     
     var body: some View {
         NavigationView {
@@ -33,25 +34,30 @@ struct ProductListView: View {
                         VStack {
                             Text(data.name)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .lineLimit(0)
 
-                            Text("\(data.price)")
+                            Text("\(Int(round((data.bargainPrice))))")
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .lineLimit(0)
                         }
+                        .lineLimit(0)
                         .padding()
         
-                        Text("\(data.stock)")
+                        Text("\(Int(round(data.stock)))")
                             .frame(alignment: .trailing)
-                    }
+                        }
+
+                }
+                if productListViewModel.isFull == false {
+                    ProgressView()
+                        .onAppear {
+                            productListViewModel.getProduct()
+                        }
                 }
             }
-            .onAppear {
-                productListViewModel.getProduct(page: 1, size: 20)
-                
-                print("onAppear")
+            .task {
+                productListViewModel.getProduct()
             }
             .navigationTitle("List")
+            .listStyle(.grouped)
         }
     }
 }

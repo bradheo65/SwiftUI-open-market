@@ -11,19 +11,17 @@ class ProductListViewModel: ObservableObject {
     
     lazy var productAPI = ProductAPI()
     @Published var lists = [Product]()
+    let isFull = false
+    var page = 1
+    var size = 20
     
-//    init() {
-//        getProduct(page: 1, size: 10)
-//    }
-    
-    func getProduct(page: Int, size: Int) {
-        
+    func getProduct() {
+        size += 5
         productAPI.getProduct(page: page, size: size) { isSuccess, model in
             switch isSuccess {
             case true:
                 self.lists = model?.pages ?? []
-                print(self.lists[0])
-
+                
             case false:
                 print("error")
             }

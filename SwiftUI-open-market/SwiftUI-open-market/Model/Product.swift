@@ -12,7 +12,7 @@ struct Product: Codable {
     let vendorName, name, pageDescription: String
     let thumbnail: String
     let currency: String
-    let price, bargainPrice, discountedPrice, stock: Int
+    let price, bargainPrice, discountedPrice, stock: Float
     let createdAt, issuedAt: String
 
     enum CodingKeys: String, CodingKey {

@@ -45,8 +45,6 @@ struct ProductListView: View {
                                 .frame(alignment: .trailing)
                             }
                     })
-      
-
                 }
                 if productListViewModel.isFull == false {
                     ProgressView()
@@ -63,6 +61,13 @@ struct ProductListView: View {
                 productListViewModel.getProduct()
             })
             .navigationTitle("List")
+            .toolbar {
+                NavigationLink {
+                    ProductAddView()
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
             .listStyle(.grouped)
         }
     }

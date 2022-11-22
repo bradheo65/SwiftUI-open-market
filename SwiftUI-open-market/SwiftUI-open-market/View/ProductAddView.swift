@@ -18,7 +18,7 @@ struct ProductAddView: View {
     
     @State private var showingImagePicker = false
     @State private var pickedImage: Image?
-    @State private var imageArray = [UIImage]()
+    @State private var imageArray: [UIImage] = []
 
     @State private var title: String = ""
     @State private var price: String = ""
@@ -35,7 +35,7 @@ struct ProductAddView: View {
                     ForEach(0..<imageArray.count, id: \.self) { images in
                         Image(uiImage: imageArray[images])
                             .resizable()
-                            .frame(width: 150, height:150, alignment: .center)
+                            .frame(width: 150, height:150)
                     }
                                     
                     if imageArray.count < 5 {
@@ -48,7 +48,13 @@ struct ProductAddView: View {
                             
                         }).sheet(isPresented: $showingImagePicker) {
                             ImagePicker(sourceType: .photoLibrary) { (image) in
-                                self.imageArray.append(image)
+                                let imageSize = image.logImageSizeInKB(scale: image.scale)
+                                if imageSize >= 300 {
+                                    let resizeImage = productAddViewModel.resizeImage(image: image, height: 150)
+                                    imageArray.append(resizeImage)
+                                } else {
+                                    imageArray.append(image)
+                                }
                             }
                         }
                     }
@@ -92,16 +98,14 @@ struct ProductAddView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button("Done") {
-                let parmtersValue = ["name": title,
-                                     "price": Int(price) ?? 0,
-                                     "stock": Int(stock) ?? 0,
-                                     "currency": currency.rawValue,
-                                     "discounted_price": Int(discountedPrice) ?? 0,
-                                     "secret": secret,
-                                     "descriptions": description] as [String : Any]
-                print(parmtersValue)
-  
-                productAddViewModel.postProduct(image: imageArray, item: parmtersValue)
+                productAddViewModel.postProduct(image: imageArray,
+                                                name: title,
+                                                descriptions: discountedPrice,
+                                                price: Int(price) ?? 0,
+                                                currency: currency.rawValue,
+                                                discountPrice: Int(discountedPrice) ?? 0,
+                                                stock: Int(discountedPrice) ?? 0,
+                                                secret: secret)
             }
         }
     }
@@ -112,4 +116,3 @@ struct ProductAddView_Previews: PreviewProvider {
         ProductAddView()
     }
 }
-

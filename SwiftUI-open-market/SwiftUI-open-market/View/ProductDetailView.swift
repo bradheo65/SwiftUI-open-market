@@ -30,24 +30,39 @@ struct ProductDetailView: View {
                             }
                         }
                         .frame(width: 350, height:350)
-                        .aspectRatio(contentMode: .fill)
+                        .aspectRatio(contentMode: .fit)
                     }
                     .padding()
                 }
             }
-            
+            Text("\(productDetailViewModel.item?.images.count ?? 0) / 5 ")
+                .foregroundColor(.secondary)
+
             HStack {
                 Text("\(productDetailViewModel.item?.name ?? "name")")
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text("\(productDetailViewModel.item?.stock ?? 0)")
                     .frame(alignment: .trailing)
+                    .foregroundColor(.secondary)
             }
             
             VStack(alignment: .trailing) {
-                Text("\(productDetailViewModel.item?.bargainPrice ?? 0)")
-                
-                Text("\(productDetailViewModel.item?.discountedPrice ?? 0)")
+                if productDetailViewModel.item?.discountedPrice != 0 {
+                    Text("\(productDetailViewModel.item?.currency ?? "") \(Int((productDetailViewModel.item?.price ?? 0)))")
+                        .font(.system(size: 15))
+                        .foregroundColor(.red)
+                        .strikethrough()
+                    
+                    Text("\(productDetailViewModel.item?.currency ?? "") \(Int((productDetailViewModel.item?.bargainPrice ?? 0)))")
+                        .font(.system(size: 15))
+                        .foregroundColor(.secondary)
+                    
+                } else {
+                    Text("\(productDetailViewModel.item?.currency ?? "") \(Int((productDetailViewModel.item?.price ?? 0)))")
+                        .font(.system(size: 15))
+                        .foregroundColor(.secondary)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             

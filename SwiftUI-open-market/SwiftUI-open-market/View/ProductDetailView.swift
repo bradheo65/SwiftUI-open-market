@@ -14,19 +14,27 @@ struct ProductDetailView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: productDetailViewModel.item?.thumbnail ?? "")) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView()
-                case .success(let image):
-                    image.resizable()
-                case .failure:
-                    EmptyView()
-                @unknown default:
-                    Image(systemName: "photo")
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(0..<(productDetailViewModel.item?.images.count ?? 0), id: \.self) { images in
+                        AsyncImage(url: URL(string: productDetailViewModel.item?.images[images].url ?? "")) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                            case .success(let image):
+                                image.resizable()
+                            case .failure:
+                                EmptyView()
+                            @unknown default:
+                                Image(systemName: "photo")
+                            }
+                        }
+                        .frame(width: 350, height:350)
+                        .aspectRatio(contentMode: .fill)
+                    }
+                    .padding()
                 }
             }
-            .aspectRatio(contentMode: .fit)
             
             HStack {
                 Text("\(productDetailViewModel.item?.name ?? "name")")

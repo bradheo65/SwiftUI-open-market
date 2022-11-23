@@ -30,7 +30,7 @@ struct ProductDetailView: View {
                             }
                         }
                         .frame(width: 350, height:350)
-                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
                     }
                     .padding()
                 }

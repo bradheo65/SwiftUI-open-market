@@ -14,32 +14,55 @@ struct ProductDetailView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: productDetailViewModel.item?.thumbnail ?? "")) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView()
-                case .success(let image):
-                    image.resizable()
-                case .failure:
-                    EmptyView()
-                @unknown default:
-                    Image(systemName: "photo")
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(0..<(productDetailViewModel.item?.images.count ?? 0), id: \.self) { images in
+                        AsyncImage(url: URL(string: productDetailViewModel.item?.images[images].url ?? "")) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                            case .success(let image):
+                                image.resizable()
+                            case .failure:
+                                EmptyView()
+                            @unknown default:
+                                Image(systemName: "photo")
+                            }
+                        }
+                        .frame(width: 350, height:350)
+                        .scaledToFit()
+                    }
+                    .padding()
                 }
             }
-            .aspectRatio(contentMode: .fit)
-            
+            Text("\(productDetailViewModel.item?.images.count ?? 0) / 5 ")
+                .foregroundColor(.secondary)
+
             HStack {
                 Text("\(productDetailViewModel.item?.name ?? "name")")
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text("\(productDetailViewModel.item?.stock ?? 0)")
                     .frame(alignment: .trailing)
+                    .foregroundColor(.secondary)
             }
             
             VStack(alignment: .trailing) {
-                Text("\(productDetailViewModel.item?.bargainPrice ?? 0)")
-                
-                Text("\(productDetailViewModel.item?.discountedPrice ?? 0)")
+                if productDetailViewModel.item?.discountedPrice != 0 {
+                    Text("\(productDetailViewModel.item?.currency ?? "") \(Int((productDetailViewModel.item?.price ?? 0)))")
+                        .font(.system(size: 15))
+                        .foregroundColor(.red)
+                        .strikethrough()
+                    
+                    Text("\(productDetailViewModel.item?.currency ?? "") \(Int((productDetailViewModel.item?.bargainPrice ?? 0)))")
+                        .font(.system(size: 15))
+                        .foregroundColor(.secondary)
+                    
+                } else {
+                    Text("\(productDetailViewModel.item?.currency ?? "") \(Int((productDetailViewModel.item?.price ?? 0)))")
+                        .font(.system(size: 15))
+                        .foregroundColor(.secondary)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             

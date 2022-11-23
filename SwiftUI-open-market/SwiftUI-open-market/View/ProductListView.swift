@@ -29,21 +29,48 @@ struct ProductListView: View {
                                     Image(systemName: "photo")
                                 }
                             }
-                            .frame(width: 100, height: 100)
-
+                            .frame(width: 80, height: 80)
+                            
                             VStack {
                                 Text(data.name)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-
-                                Text("\(Int(round((data.bargainPrice))))")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(.title3)
+                                HStack {
+                                    if data.discountedPrice != 0 {
+                                        Text("\(data.currency) \(Int(round((data.price))))")
+                                            .frame(alignment: .leading)
+                                            .font(.system(size: 15))
+                                            .foregroundColor(.red)
+                                            .strikethrough()
+                                        
+                                        Text("\(data.currency) \(Int(round((data.bargainPrice))))")
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .font(.system(size: 15))
+                                            .foregroundColor(.secondary)
+                                        
+                                    } else {
+                                        Text("\(data.currency) \(Int(round((data.price))))")
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .font(.system(size: 15))
+                                            .foregroundColor(.secondary)
+                                    }
+                                }
                             }
                             .lineLimit(0)
                             .padding()
-            
-                            Text("\(Int(round(data.stock)))")
-                                .frame(alignment: .trailing)
+                            
+                            if data.stock != 0 {
+                                Text("잔여수량: \(Int(round(data.stock)))")
+                                    .frame(alignment: .trailing)
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.secondary)
+                                
+                            } else {
+                                Text("품절")
+                                    .frame(alignment: .trailing)
+                                    .foregroundColor(.yellow)
                             }
+                        }
                     })
                 }
                 if productListViewModel.isFull == false {

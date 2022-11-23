@@ -98,7 +98,7 @@ struct ProductAddView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button("Done") {
-                productAddViewModel.postProduct(image: imageArray,
+                productAddViewModel.post(image: imageArray,
                                                 name: title,
                                                 descriptions: discountedPrice,
                                                 price: Int(price) ?? 0,

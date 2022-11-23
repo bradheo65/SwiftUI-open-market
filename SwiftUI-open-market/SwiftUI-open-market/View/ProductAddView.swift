@@ -14,6 +14,7 @@ enum Currency: String {
 
 struct ProductAddView: View {
     
+    @Environment(\.dismiss) private var dismiss
     private var productAddViewModel = ProductAddViewModel()
     
     @State private var showingImagePicker = false
@@ -69,6 +70,7 @@ struct ProductAddView: View {
                 TextField("상품가격", text: $price)
                     .background(Color(uiColor: .secondarySystemBackground))
                     .textFieldStyle(.roundedBorder)
+                    .keyboardType(.numbersAndPunctuation)
                 
                 Picker("가격", selection: $currency) {
                     Text(Currency.KRW.rawValue)
@@ -82,10 +84,12 @@ struct ProductAddView: View {
             TextField("할인금액", text: $discountedPrice)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textFieldStyle(.roundedBorder)
+                .keyboardType(.numbersAndPunctuation)
             
             TextField("재고수량", text: $stock)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textFieldStyle(.roundedBorder)
+                .keyboardType(.numbersAndPunctuation)
             
             TextEditor(text: $description)
                 .frame(maxHeight: .infinity)
@@ -106,6 +110,7 @@ struct ProductAddView: View {
                                                 discountPrice: Int(discountedPrice) ?? 0,
                                                 stock: Int(discountedPrice) ?? 0,
                                                 secret: secret)
+                dismiss()
             }
         }
     }

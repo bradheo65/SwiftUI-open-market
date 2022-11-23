@@ -45,4 +45,39 @@ class ProductAPI {
             }
         }
     }
+    
+    func postProduct(images: [UIImage], parameters: [String : Any], completion: @escaping (Result<Data, Error>) -> Void) {
+        
+        let url = "https://openmarket.yagom-academy.kr/api/products"
+        let header: HTTPHeaders = [
+            "identifier": VendorInfo.identifier,
+            "Content-Type": "multipart/form-data"
+        ]
+        
+        AF.upload(multipartFormData: { multipartFormData in
+            for (key, value) in parameters {
+                if key == "value" {
+                    multipartFormData.append("\(value)".data(using: .utf8)!, withName: "params", mimeType: "application/json")
+                }
+            }
+            
+            for image in images {
+                let imageData: Data = image.jpegData(compressionQuality: 0.8)!
+                
+                multipartFormData.append(imageData, withName: "images", fileName: "\(imageData).jpg", mimeType: "content-type header")
+            }
+        
+        }, to: url, method: .post, headers: header).response { response in
+            guard let statusCode = response.response?.statusCode else {
+                return
+            }
+            
+            switch statusCode {
+            case 200:
+                completion(.success(response.data ?? Data()))
+            default:
+                completion(.success(response.data ?? Data()))
+            }
+        }
+    }
 }

@@ -10,7 +10,9 @@ import SwiftUI
 struct ProductListView: View {
     
     @ObservedObject private var productListViewModel = ProductListViewModel()
-    
+
+    @State private var showAddView = false
+
     var body: some View {
         NavigationView {
             List {
@@ -24,9 +26,9 @@ struct ProductListView: View {
                                 case .success(let image):
                                     image.resizable()
                                 case .failure:
-                                    Image(systemName: "wifi.slash")
-                                @unknown default:
                                     Image(systemName: "photo")
+                                @unknown default:
+                                    EmptyView()
                                 }
                             }
                             .frame(width: 80, height: 80)
@@ -89,13 +91,16 @@ struct ProductListView: View {
             })
             .navigationTitle("List")
             .toolbar {
-                NavigationLink {
-                    ProductAddView()
+                Button {
+                    showAddView = true
                 } label: {
                     Image(systemName: "plus")
                 }
             }
             .listStyle(.grouped)
+            .sheet(isPresented: $showAddView) {
+                ProductAddView()
+            }
         }
     }
 }

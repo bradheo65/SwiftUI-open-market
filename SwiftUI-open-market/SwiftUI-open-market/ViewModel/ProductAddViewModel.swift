@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class ProductAddViewModel {
+class ProductAddViewModel: ObservableObject {
     
     let productAPI = ProductAPI()
     

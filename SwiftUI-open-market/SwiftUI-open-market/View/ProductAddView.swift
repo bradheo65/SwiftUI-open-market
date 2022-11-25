@@ -23,7 +23,6 @@ struct ProductAddView: View {
     @State private var discountedPrice: String = ""
     @State private var stock: String = ""
     @State private var description: String = ""
-    @State private var secret: String = VendorInfo.secret
     
     var item: DetailProduct?
     
@@ -80,7 +79,6 @@ struct ProductAddView: View {
                         }
                     }
                 }
-                
                 TextField("상품명", text: $title)
                     .background(Color(uiColor: .secondarySystemBackground))
                     .textFieldStyle(.roundedBorder)
@@ -128,18 +126,29 @@ struct ProductAddView: View {
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        productAddViewModel.post(image: imageArray,
-                                                 name: title,
-                                                 descriptions: discountedPrice,
-                                                 price: Int(price) ?? 0,
-                                                 currency: currency.rawValue,
-                                                 discountPrice: Int(discountedPrice) ?? 0,
-                                                 stock: Int(discountedPrice) ?? 0,
-                                                 secret: secret)
+                        if item != nil {
+                            productAddViewModel.patch(id: item?.id ?? 0,
+                                                     image: imageArray,
+                                                     name: title,
+                                                     descriptions: description,
+                                                     price: Int(price) ?? 0,
+                                                     currency: currency.rawValue,
+                                                     discountPrice: Int(discountedPrice) ?? 0,
+                                                     stock: Int(discountedPrice) ?? 0
+                                                     )
+                        } else {
+                            productAddViewModel.post(image: imageArray,
+                                                     name: title,
+                                                     descriptions: description,
+                                                     price: Int(price) ?? 0,
+                                                     currency: currency.rawValue,
+                                                     discountPrice: Int(discountedPrice) ?? 0,
+                                                     stock: Int(discountedPrice) ?? 0
+                                                     )
+                        }
                         dismiss()
                     }
                 }
-
             }
             .onAppear {
                 if item != nil {

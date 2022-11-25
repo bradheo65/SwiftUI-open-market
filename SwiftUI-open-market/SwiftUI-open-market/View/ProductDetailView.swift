@@ -79,10 +79,12 @@ struct ProductDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(productDetailViewModel.item?.name ?? "")
         .toolbar {
-            Button {
-                showAlert = true
-            } label: {
-                Image(systemName: "square.and.arrow.up")
+            if productDetailViewModel.item?.vendorID == VendorInfo.venderID {
+                Button {
+                    showAlert = true
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
             }
         }
         .confirmationDialog("정말 삭제할까요?", isPresented: $showAlert) {
@@ -98,7 +100,6 @@ struct ProductDetailView: View {
                     Text("삭제")
                 }
             }
-
         }
         .sheet(isPresented: $showDetailView) {
             ProductAddView(item: productDetailViewModel.item)

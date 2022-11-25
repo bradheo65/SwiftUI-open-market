@@ -12,11 +12,11 @@ class ProductAddViewModel: ObservableObject {
     
     let productAPI = ProductAPI()
     
-    func post(image: [UIImage], name: String, descriptions: String, price: Int, currency: String, discountPrice: Int, stock: Int, secret: String) {
+    func post(image: [UIImage], name: String, descriptions: String, price: Int, currency: String, discountPrice: Int, stock: Int) {
         let parameters =
         [
             "key": "params",
-            "value": "{ \"name\": \"\(name)\", \"description\": \"\(descriptions)\", \"price\": \(price), \"currency\": \"\(currency)\", \"discounted_price\": \(discountPrice), \"stock\": \(stock), \"secret\": \"z1xc3q4v12b3b1ja3ou\" }",
+            "value": "{ \"name\": \"\(name)\", \"description\": \"\(descriptions)\", \"price\": \(price), \"currency\": \"\(currency)\", \"discounted_price\": \(discountPrice), \"stock\": \(stock), \"secret\": \"\(VendorInfo.secret)\" }",
             "type": "text",
             "contentType": "application/json"
         ] as [String : Any]
@@ -25,6 +25,31 @@ class ProductAddViewModel: ObservableObject {
             switch response {
             case .success(let data):
                 print(data)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func patch(id: Int, image: [UIImage], name: String, descriptions: String, price: Int, currency: String, discountPrice: Int, stock: Int) {
+        
+        let parameters2 =
+        [
+            "identifier": VendorInfo.identifier,
+            "product_id": id,
+            "name": name,
+            "description": descriptions,
+            "price": price,
+            "currency": currency,
+            "discounted_price": discountPrice,
+            "stock": stock,
+            "secret": VendorInfo.secret
+        ] as [String : Any]
+        
+        productAPI.patchProduct(id: id, images: image, parameters: parameters2) { response in
+            switch response {
+            case .success(let data):
+                print(String(data: data, encoding: .utf8)!)
             case .failure(let error):
                 print(error)
             }

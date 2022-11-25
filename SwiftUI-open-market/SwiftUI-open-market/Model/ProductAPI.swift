@@ -80,4 +80,21 @@ class ProductAPI {
             }
         }
     }
+    
+    func patchProduct(id: Int, images: [UIImage], parameters: [String : Any], completion: @escaping (Result<Data, Error>) -> Void) {
+        
+        let url = "https://openmarket.yagom-academy.kr/api/products/\(id)"
+        let header: HTTPHeaders = [
+            "identifier": VendorInfo.identifier
+        ]
+
+        AF.request(url, method: .patch, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseData { response in
+            switch response.result {
+            case .success(let data):
+                print(data)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

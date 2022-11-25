@@ -63,11 +63,11 @@
 ## 📱 동작 화면
 
 ### 형태별 동작 화면
-|GET|POST|
+|아이템 조회 - GET|아이템 등록 - POST|
 |:---:|:---:|
 |<image src = "https://i.imgur.com/W0yCrKm.gif" width="250" height="500">| <image src = "https://i.imgur.com/ul5krtQ.gif" width="250" height="500">
     
-|PATCH|POST|
+|아이템 수정 - PATCH|아이템 삭제 - DELETE|
 |:---:|:---:|
 |<image src = "https://i.imgur.com/1LTLY4P.gif" width="250" height="500">| <image src = "https://i.imgur.com/SBvAJeh.gif" width="250" height="500">
 

@@ -22,4 +22,30 @@ class ProductDetailViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteProduct(id: Int) {
+        let parameters =
+        [
+            "secret": VendorInfo.secret
+        ] as [String : Any]
+        
+        productAPI.requestDeleteProductURL(id: id, parameters: parameters) { response in
+            switch response {
+            case .success(let data):
+                let selecteURL = String(data: data, encoding: .utf8) ?? ""
+                let parsingURL = selecteURL.trimmingCharacters(in: ["="])
+
+                self.productAPI.deleteProduct(deleteURL: parsingURL) { response in
+                    switch response {
+                    case .success(let success):
+                        print(String(data: success, encoding: .utf8) ?? "")
+                    case .failure(let failure):
+                        print(failure)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

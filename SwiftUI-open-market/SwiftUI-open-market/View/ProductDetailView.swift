@@ -96,6 +96,7 @@ struct ProductDetailView: View {
                 }
                 Button(role: .destructive) {
                     print("삭제")
+                    productDetailViewModel.deleteProduct(id: productDetailViewModel.item?.id ?? 0)
                 } label: {
                     Text("삭제")
                 }

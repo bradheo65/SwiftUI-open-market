@@ -33,7 +33,7 @@ class ProductAddViewModel: ObservableObject {
     
     func patch(id: Int, image: [UIImage], name: String, descriptions: String, price: Int, currency: String, discountPrice: Int, stock: Int) {
         
-        let parameters2 =
+        let parameters =
         [
             "identifier": VendorInfo.identifier,
             "product_id": id,
@@ -46,7 +46,7 @@ class ProductAddViewModel: ObservableObject {
             "secret": VendorInfo.secret
         ] as [String : Any]
         
-        productAPI.patchProduct(id: id, images: image, parameters: parameters2) { response in
+        productAPI.patchProduct(id: id, images: image, parameters: parameters) { response in
             switch response {
             case .success(let data):
                 print(String(data: data, encoding: .utf8)!)

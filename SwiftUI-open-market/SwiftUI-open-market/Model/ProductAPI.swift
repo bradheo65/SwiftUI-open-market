@@ -97,4 +97,38 @@ class ProductAPI {
             }
         }
     }
+    
+    func requestDeleteProductURL(id: Int, parameters: [String : Any], completion: @escaping (Result<Data, Error>) -> Void) {
+        
+        let url = "https://openmarket.yagom-academy.kr/api/products/\(id)/archived"
+        let header: HTTPHeaders = [
+            "identifier": VendorInfo.identifier
+        ]
+
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseData { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func deleteProduct(deleteURL: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        
+        let url = "https://openmarket.yagom-academy.kr\(deleteURL)"
+        let header: HTTPHeaders = [
+            "identifier": VendorInfo.identifier
+        ]
+
+        AF.request(url, method: .delete, headers: header).responseData { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

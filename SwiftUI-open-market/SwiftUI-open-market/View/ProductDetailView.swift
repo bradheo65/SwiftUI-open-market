@@ -9,10 +9,12 @@ import SwiftUI
 
 struct ProductDetailView: View {
     
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject private var productDetailViewModel = ProductDetailViewModel()
     @State private var showAlert = false
     @State private var tag: Int? = nil
     @State private var showDetailView = false
+    @State private var showDeleteAlert = false
     var item: Int = 0
     
     var body: some View {
@@ -87,16 +89,16 @@ struct ProductDetailView: View {
                 }
             }
         }
-        .confirmationDialog("정말 삭제할까요?", isPresented: $showAlert) {
+        .confirmationDialog("", isPresented: $showAlert) {
             VStack {
                 Button {
                     showDetailView = true
                 } label: {
                     Text("수정")
                 }
+                
                 Button(role: .destructive) {
-                    print("삭제")
-                    productDetailViewModel.deleteProduct(id: productDetailViewModel.item?.id ?? 0)
+                    showDeleteAlert = true
                 } label: {
                     Text("삭제")
                 }
@@ -104,6 +106,12 @@ struct ProductDetailView: View {
         }
         .sheet(isPresented: $showDetailView) {
             ProductAddView(item: productDetailViewModel.item)
+        }
+        .alert("정말 삭제할까요?", isPresented: $showDeleteAlert) {
+            Button("OK", role: .destructive) {
+                productDetailViewModel.deleteProduct(id: productDetailViewModel.item?.id ?? 0)
+                dismiss()
+            }
         }
     }
 }

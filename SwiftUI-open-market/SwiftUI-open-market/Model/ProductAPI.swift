@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class ProductAPI {
+final class ProductAPI {
     
     func getProduct(page: Int, size: Int, completion: @escaping (Bool, ProductListResponse?) -> Void) {
         let URL = "https://openmarket.yagom-academy.kr/api/products?page_no=\(page)&items_per_page=\(size)"

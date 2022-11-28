@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProductListViewModel: ObservableObject {
+final class ProductListViewModel: ObservableObject {
     
     lazy var productAPI = ProductAPI()
     @Published var lists = [Product]()

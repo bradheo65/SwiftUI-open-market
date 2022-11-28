@@ -5,8 +5,6 @@
 //  Created by brad on 2022/11/17.
 //
 
-import Foundation
-
 struct ProductListResponse: Codable {
     let pageNo, itemsPerPage, totalCount, offset: Int
     let limit, lastPage: Int

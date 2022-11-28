@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProductDetailViewModel: ObservableObject {
+final class ProductDetailViewModel: ObservableObject {
     
     lazy var productAPI = ProductAPI()
     @Published var item: DetailProduct?

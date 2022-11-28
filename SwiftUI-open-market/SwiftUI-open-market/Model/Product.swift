@@ -5,14 +5,12 @@
 //  Created by brad on 2022/11/17.
 //
 
-import SwiftUI
-
 struct Product: Codable {
     let id, vendorID: Int
     let vendorName, name, pageDescription: String
     let thumbnail: String
     let currency: String
-    let price, bargainPrice, discountedPrice, stock: Float
+    let price, bargainPrice, discountedPrice, stock: Double
     let createdAt, issuedAt: String
 
     enum CodingKeys: String, CodingKey {
@@ -27,10 +25,4 @@ struct Product: Codable {
         case createdAt = "created_at"
         case issuedAt = "issued_at"
     }
-}
-
-struct ImageFile {
-    let key: String
-    let src: Data
-    let type: String
 }

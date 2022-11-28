@@ -67,13 +67,7 @@ struct ProductAddView: View {
                                 
                             }).sheet(isPresented: $showingImagePicker) {
                                 ImagePicker(sourceType: .photoLibrary) { (image) in
-                                    let imageSize = image.logImageSizeInKB(scale: image.scale)
-                                    if imageSize >= 300 {
-                                        let resizeImage = productAddViewModel.resizeImage(image: image, height: 150)
-                                        imageArray.append(resizeImage)
-                                    } else {
-                                        imageArray.append(image)
-                                    }
+                                    imageArray.append(image)
                                 }
                             }
                         }

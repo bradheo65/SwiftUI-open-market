@@ -55,17 +55,4 @@ final class ProductAddViewModel: ObservableObject {
             }
         }
     }
-    
-    func resizeImage(image: UIImage, height: CGFloat) -> UIImage {
-        let scale = height / image.size.height
-        let width = image.size.width * scale
-        
-        UIGraphicsBeginImageContext(CGSize(width: width, height: height))
-        image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
-        
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
 }

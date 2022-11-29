@@ -10,7 +10,7 @@ import SwiftUI
 
 final class ProductAddViewModel: ObservableObject {
     
-    let productAPI = ProductAPI()
+    private let productAPI = ProductAPI()
     
     func post(image: [UIImage], name: String, descriptions: String, price: Int, currency: String, discountPrice: Int, stock: Int) {
         let parameters =

@@ -9,11 +9,13 @@ import Foundation
 
 final class ProductListViewModel: ObservableObject {
     
-    lazy var productAPI = ProductAPI()
     @Published var lists = [Product]()
     let isFull = false
-    var page = 1
-    var size = 20
+    
+    private lazy var productAPI = ProductAPI()
+
+    private var page = 1
+    private var size = 20
     
     func getProduct() {
         size += 5

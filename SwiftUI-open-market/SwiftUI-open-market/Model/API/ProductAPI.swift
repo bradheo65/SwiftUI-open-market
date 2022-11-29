@@ -5,7 +5,6 @@
 //  Created by brad on 2022/11/17.
 //
 
-import Foundation
 import Alamofire
 
 final class ProductAPI {

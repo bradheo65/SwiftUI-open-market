@@ -7,8 +7,3 @@
 
 import Foundation
 
-struct ImageFile {
-    let key: String
-    let src: Data
-    let type: String
-}

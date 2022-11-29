@@ -9,7 +9,7 @@ import Foundation
 
 final class ProductDetailViewModel: ObservableObject {
     
-    lazy var productAPI = ProductAPI()
+    private lazy var productAPI = ProductAPI()
     @Published var item: DetailProduct?
     
     func getProduct(id: Int) {

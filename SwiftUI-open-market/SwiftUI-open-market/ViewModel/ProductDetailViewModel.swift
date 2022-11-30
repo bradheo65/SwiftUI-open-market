@@ -48,4 +48,49 @@ final class ProductDetailViewModel: ObservableObject {
             }
         }
     }
+    
+    func getCount() -> Int {
+        let count = item?.images.count ?? 0
+        return count
+    }
+    
+    func getID() -> Int {
+        let id = item?.id ?? 0
+        return id
+    }
+    
+    func getImageURL(index: Int) -> String {
+        let imageURL = item?.images[index].url ?? ""
+        return imageURL
+    }
+    
+    func getName() -> String {
+        let name = item?.name ?? ""
+        return name
+    }
+
+    func getCurrency() -> String {
+        let currency = item?.currency ?? ""
+        return currency
+    }
+    
+    func getPrice() -> String {
+        let price = String(format: "%.f", item?.price ?? 0)
+        return price
+    }
+    
+    func getBargainPrice() -> String {
+        let bargainPrice = String(format: "%.f", item?.bargainPrice ?? 0)
+        return bargainPrice
+    }
+    
+    func getStock() -> String {
+        let stock = String(format: "%.f", item?.stock ?? 0)
+        return stock
+    }
+    
+    func getWelcomeDescription() -> String {
+        let welcomeDescription = item?.welcomeDescription ?? ""
+        return welcomeDescription
+    }
 }

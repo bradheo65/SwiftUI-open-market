@@ -10,7 +10,7 @@ struct DetailProduct: Codable {
     let name, welcomeDescription: String
     let thumbnail: String
     let currency: String
-    let price, bargainPrice, discountedPrice, stock: Int
+    let price, bargainPrice, discountedPrice, stock: Double
     let createdAt, issuedAt: String
     let images: [DetailImage]
     let vendors: Vendors

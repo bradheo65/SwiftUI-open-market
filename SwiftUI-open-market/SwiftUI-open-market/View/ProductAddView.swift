@@ -148,9 +148,9 @@ struct ProductAddView: View {
                 if item != nil {
                     detailImageArray = item?.images ?? []
                     title = item?.name ?? ""
-                    price = "\(item?.price ?? 0)"
-                    discountedPrice = "\(item?.discountedPrice ?? 0)"
-                    stock = "\(item?.stock ?? 0)"
+                    price = String(format: "%.f", item?.price ?? 0)
+                    discountedPrice = String(format: "%.f", item?.discountedPrice ?? 0)
+                    stock = String(format: "%.f", item?.stock ?? 0)
                     description = item?.welcomeDescription ?? ""
                 }
             }

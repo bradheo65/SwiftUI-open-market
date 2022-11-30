@@ -10,16 +10,16 @@ import SwiftUI
 struct ProductListView: View {
     
     @ObservedObject private var productListViewModel = ProductListViewModel()
-
+    
     @State private var showAddView = false
-
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(productListViewModel.lists, id: \.id) { data in
                     NavigationLink (destination: ProductDetailView(item: data.id), label: {
                         HStack {
-                            AsyncImage(url: URL(string: data.thumbnail)) { phase in
+                            AsyncImage(url: productListViewModel.getURL(Product: data)) { phase in
                                 switch phase {
                                 case .empty:
                                     ProgressView()
@@ -31,50 +31,63 @@ struct ProductListView: View {
                                     EmptyView()
                                 }
                             }
-                            .frame(width: 80, height: 80)
+                            .frame(width: 60, height: 60)
                             
                             VStack {
-                                Text(data.name)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .font(.title3)
+                                HStack {
+                                    Text(productListViewModel.getName(Product: data))
+                                        .frame(maxWidth: .infinity,
+                                               alignment: .leading)
+                                        .font(.title3)
+                                        .lineLimit(1)
+                                    if data.stock != 0 {
+                                        HStack {
+                                            Text("잔여수량:")
+                                            Text(productListViewModel.getStock(Product: data))
+                                        }
+                                        .frame(alignment: .trailing)
+                                        .font(.system(size: 15))
+                                        .foregroundColor(.secondary)
+                                        .lineLimit(1)
+                                    } else {
+                                        Text("품절")
+                                            .frame(alignment: .trailing)
+                                            .foregroundColor(.yellow)
+                                    }
+                                }
                                 HStack {
                                     if data.discountedPrice != 0 {
-                                        Text("\(data.currency) \(Int(round((data.price))))")
-                                            .frame(alignment: .leading)
+                                        HStack {
+                                            HStack {
+                                                Text(productListViewModel.getCurrency(Product: data))
+                                                Text(productListViewModel.getPrice(Product: data))
+                                            }
                                             .font(.system(size: 15))
                                             .foregroundColor(.red)
                                             .strikethrough()
-                                        
-                                        Text("\(data.currency) \(Int(round((data.bargainPrice))))")
-                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            
+                                            HStack {
+                                                Text(productListViewModel.getCurrency(Product: data))
+                                                Text(productListViewModel.getBargainPrice(Product: data))
+                                            }
                                             .font(.system(size: 15))
                                             .foregroundColor(.secondary)
                                             .lineLimit(1)
-                                        
+                                        }
+                                        .frame(maxWidth: .infinity,
+                                               alignment: .leading)
                                     } else {
-                                        Text("\(data.currency) \(round((data.price)))")
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                            .font(.system(size: 15))
-                                            .foregroundColor(.secondary)
-                                            .lineLimit(1)
+                                        HStack {
+                                            Text(productListViewModel.getCurrency(Product: data))
+                                            Text(productListViewModel.getPrice(Product: data))
+                                        }
+                                        .font(.system(size: 15))
+                                        .foregroundColor(.secondary)
+                                        .lineLimit(1)
+                                        .frame(maxWidth: .infinity,
+                                               alignment: .leading)
                                     }
                                 }
-                            }
-                            .lineLimit(0)
-                            .padding()
-                            
-                            if data.stock != 0 {
-                                Text("잔여수량: \(Int(round(data.stock)))")
-                                    .frame(alignment: .trailing)
-                                    .font(.system(size: 15))
-                                    .foregroundColor(.secondary)
-                                    .lineLimit(1)
-                                
-                            } else {
-                                Text("품절")
-                                    .frame(alignment: .trailing)
-                                    .foregroundColor(.yellow)
-                                    .lineLimit(1)
                             }
                         }
                     })

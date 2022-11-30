@@ -29,4 +29,32 @@ final class ProductListViewModel: ObservableObject {
             }
         }
     }
+    
+    func getName(Product: Product) -> String {
+        return Product.name
+    }
+    
+    func getURL(Product: Product) -> URL {
+        let url = URL(string: Product.thumbnail)!
+        return url
+    }
+    
+    func getCurrency(Product: Product) -> String {
+        return Product.currency
+    }
+    
+    func getPrice(Product: Product) -> String {
+        let price = String(format: "%.f", Product.price)
+        return price
+    }
+    
+    func getBargainPrice(Product: Product) -> String {
+        let bargainPrice = String(format: "%.f", Product.bargainPrice)
+        return bargainPrice
+    }
+    
+    func getStock(Product: Product) -> String {
+        let stock = String(format: "%.f", Product.stock)
+        return stock
+    }
 }

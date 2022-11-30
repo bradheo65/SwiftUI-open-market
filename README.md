@@ -29,47 +29,58 @@
 .
 ├── Assets.xcassets
 │   ├── AccentColor.colorset
+│   │   ├── Contents 2.json
 │   │   └── Contents.json
 │   ├── AppIcon.appiconset
+│   │   ├── Contents 2.json
 │   │   └── Contents.json
 │   ├── Contents.json
 │   └── Image.imageset
 │       ├── Contents.json
 │       └── TestImage.png
 ├── Enum
+│   ├── Currency.swift
 │   └── VendorInfo.swift
-├── Extension
-│   └── Extension+UIImage.swift
 ├── Model
-│   ├── DetailProduct.swift
-│   ├── Product.swift
-│   ├── ProductAPI.swift
-│   └── ProductListResponse.swift
+│   ├── API
+│   │   └── ProductAPI.swift
+│   ├── DetailProduct
+│   │   ├── DetailImage.swift
+│   │   ├── DetailProduct.swift
+│   │   └── Vendors.swift
+│   ├── DetailProduct 2.swift
+│   ├── ImageFile.swift
+│   └── Product
+│       ├── Product.swift
+│       └── ProductListResponse.swift
 ├── Preview Content
 │   └── Preview Assets.xcassets
+│       ├── Contents 2.json
 │       └── Contents.json
 ├── SwiftUI_open_marketApp.swift
 ├── View
+│   ├── ImagePicker 2.swift
 │   ├── ImagePicker.swift
 │   ├── ProductAddView.swift
 │   ├── ProductDetailView.swift
 │   └── ProductListView.swift
 └── ViewModel
+    ├── ProductAddViewModel 2.swift
     ├── ProductAddViewModel.swift
     ├── ProductDetailViewModel.swift
     └── ProductListViewModel.swift
 ```
-    
+
 ## 📱 동작 화면
 
 ### 형태별 동작 화면
-|아이템 조회 - GET|아이템 등록 - POST|
+|GET|POST|
 |:---:|:---:|
-|<image src = "https://i.imgur.com/W0yCrKm.gif" width="250" height="500">| <image src = "https://i.imgur.com/ul5krtQ.gif" width="250" height="500">
-    
-|아이템 수정 - PATCH|아이템 삭제 - DELETE|
+|<image src = "https://i.imgur.com/4SxzZZT.gif" width="250" height="500">| <image src = "https://i.imgur.com/1bXdXZC.gif" width="250" height="500">
+
+|PATCH|POST|
 |:---:|:---:|
-|<image src = "https://i.imgur.com/1LTLY4P.gif" width="250" height="500">| <image src = "https://i.imgur.com/SBvAJeh.gif" width="250" height="500">
+|<image src = "https://i.imgur.com/SFR2iit.gif" width="250" height="500">| <image src = "https://i.imgur.com/GL17mwH.gif" width="250" height="500">
 
 
 ## 💡 키워드

@@ -61,7 +61,7 @@ final class ProductAPI {
             }
             
             for image in images {
-                let imageData: Data = image.jpegData(compressionQuality: 0.3)!
+                let imageData: Data = image.jpegData(compressionQuality: 0.1)!
 
                 multipartFormData.append(imageData, withName: "images", fileName: "\(imageData).jpg", mimeType: "content-type header")
             }

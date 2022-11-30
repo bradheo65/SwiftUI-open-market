@@ -49,12 +49,14 @@ struct ProductListView: View {
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .font(.system(size: 15))
                                             .foregroundColor(.secondary)
+                                            .lineLimit(1)
                                         
                                     } else {
-                                        Text("\(data.currency) \(Int(round((data.price))))")
+                                        Text("\(data.currency) \(round((data.price)))")
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .font(.system(size: 15))
                                             .foregroundColor(.secondary)
+                                            .lineLimit(1)
                                     }
                                 }
                             }
@@ -66,11 +68,13 @@ struct ProductListView: View {
                                     .frame(alignment: .trailing)
                                     .font(.system(size: 15))
                                     .foregroundColor(.secondary)
+                                    .lineLimit(1)
                                 
                             } else {
                                 Text("품절")
                                     .frame(alignment: .trailing)
                                     .foregroundColor(.yellow)
+                                    .lineLimit(1)
                             }
                         }
                     })

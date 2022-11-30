@@ -13,38 +13,40 @@ struct ProductDetailView: View {
     @ObservedObject private var productDetailViewModel = ProductDetailViewModel()
     @State private var showAlert = false
     @State private var tag: Int? = nil
+    @State private var currentImage: Int = 0
     @State private var showDetailView = false
     @State private var showDeleteAlert = false
     var item: Int = 0
     
     var body: some View {
         VStack {
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(0..<(productDetailViewModel.item?.images.count ?? 0), id: \.self) { images in
-                        AsyncImage(url: URL(string: productDetailViewModel.item?.images[images].url ?? "")) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                            case .success(let image):
-                                image.resizable()
-                            case .failure:
-                                EmptyView()
-                            @unknown default:
-                                Image(systemName: "photo")
-                            }
+            TabView(selection: self.$currentImage) {
+                ForEach(0..<(productDetailViewModel.item?.images.count ?? 0), id: \.self) { images in
+                    AsyncImage(url: URL(string: productDetailViewModel.item?.images[images].url ?? "")) { phase in
+                        
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                        case .success(let image):
+                            image.resizable()
+                        case .failure:
+                            Image(systemName: "photo")
+                        @unknown default:
+                            Image(systemName: "photo")
                         }
-                        .frame(width: 350, height:350)
-                        .scaledToFit()
                     }
-                    .padding()
+                    .scaledToFit()
                 }
+                .padding()
             }
-            Text("\(productDetailViewModel.item?.images.count ?? 0) / 5 ")
+            .tabViewStyle(PageTabViewStyle())
+            .frame(height:350)
+
+            Text("\(currentImage + 1) / \(productDetailViewModel.item?.images.count ?? 0) ")
                 .foregroundColor(.secondary)
             
             HStack {
-                Text("\(productDetailViewModel.item?.name ?? "name")")
+                Text(productDetailViewModel.item?.name ?? "")
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text("\(productDetailViewModel.item?.stock ?? 0)")
@@ -54,17 +56,17 @@ struct ProductDetailView: View {
             
             VStack(alignment: .trailing) {
                 if productDetailViewModel.item?.discountedPrice != 0 {
-                    Text("\(productDetailViewModel.item?.currency ?? "") \(Int((productDetailViewModel.item?.price ?? 0)))")
+                    Text("\(productDetailViewModel.item?.currency ?? "") \((productDetailViewModel.item?.price ?? 0))")
                         .font(.system(size: 15))
                         .foregroundColor(.red)
                         .strikethrough()
                     
-                    Text("\(productDetailViewModel.item?.currency ?? "") \(Int((productDetailViewModel.item?.bargainPrice ?? 0)))")
+                    Text("\(productDetailViewModel.item?.currency ?? "") \((productDetailViewModel.item?.bargainPrice ?? 0))")
                         .font(.system(size: 15))
                         .foregroundColor(.secondary)
                     
                 } else {
-                    Text("\(productDetailViewModel.item?.currency ?? "") \(Int((productDetailViewModel.item?.price ?? 0)))")
+                    Text("\(productDetailViewModel.item?.currency ?? "") \((productDetailViewModel.item?.price ?? 0))")
                         .font(.system(size: 15))
                         .foregroundColor(.secondary)
                 }

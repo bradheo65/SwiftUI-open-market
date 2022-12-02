@@ -76,17 +76,23 @@ final class ProductDetailViewModel: ObservableObject {
     
     func getPrice() -> String {
         let price = String(format: "%.f", item?.price ?? 0)
-        return price
+        let priceComma = price.insertComma
+        
+        return priceComma
     }
     
     func getBargainPrice() -> String {
         let bargainPrice = String(format: "%.f", item?.bargainPrice ?? 0)
-        return bargainPrice
+        let bargainPriceComma = bargainPrice.insertComma
+        
+        return bargainPriceComma
     }
     
     func getStock() -> String {
         let stock = String(format: "%.f", item?.stock ?? 0)
-        return stock
+        let stockComma = stock.insertComma
+        
+        return stockComma
     }
     
     func getWelcomeDescription() -> String {

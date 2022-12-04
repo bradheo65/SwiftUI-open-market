@@ -84,11 +84,12 @@ struct ProductDetailView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
-            
-            Text(productDetailViewModel.getWelcomeDescription())
-                .frame(maxWidth: .infinity,
-                       maxHeight: 600,
-                       alignment: .topLeading)
+            ScrollView {
+                Text(productDetailViewModel.getWelcomeDescription())
+                    .frame(maxWidth: .infinity,
+                           maxHeight: .infinity,
+                           alignment: .topLeading)
+            }
         }
         .task {
             productDetailViewModel.getProduct(id: item)

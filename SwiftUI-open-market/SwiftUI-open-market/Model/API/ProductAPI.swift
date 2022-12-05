@@ -9,7 +9,7 @@ import Alamofire
 
 final class ProductAPI {
     
-    enum OpenMarketAPI {
+    private enum OpenMarketAPI {
         static let url = "https://openmarket.yagom-academy.kr"
         static let products = "/api/products"
         static let pageNo = "page_no"
@@ -83,7 +83,10 @@ final class ProductAPI {
                 multipartFormData.append(imageData, withName: "images", fileName: "\(imageData).jpg", mimeType: "content-type header")
             }
         
-        }, to: urlComponents?.string ?? "", method: .post, headers: header).response { response in
+        }, to: urlComponents?.string ?? "",
+                  method: .post,
+                  headers: header)
+        .response { response in
             guard let statusCode = response.response?.statusCode else {
                 return
             }
@@ -108,7 +111,12 @@ final class ProductAPI {
             "identifier": VendorInfo.identifier
         ]
 
-        AF.request(urlComponents?.string ?? "", method: .patch, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseData { response in
+        AF.request(urlComponents?.string ?? "",
+                   method: .patch,
+                   parameters: parameters,
+                   encoding: JSONEncoding.default,
+                   headers: header)
+        .responseData { response in
             switch response.result {
             case .success(let data):
                 print(data)
@@ -131,7 +139,12 @@ final class ProductAPI {
             "identifier": VendorInfo.identifier
         ]
 
-        AF.request(urlComponents?.string ?? "", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseData { response in
+        AF.request(urlComponents?.string ?? "",
+                   method: .post,
+                   parameters: parameters,
+                   encoding: JSONEncoding.default,
+                   headers: header)
+        .responseData { response in
             switch response.result {
             case .success(let data):
                 completion(.success(data))
@@ -149,7 +162,10 @@ final class ProductAPI {
             "identifier": VendorInfo.identifier
         ]
 
-        AF.request(urlComponents?.string ?? "", method: .delete, headers: header).responseData { response in
+        AF.request(urlComponents?.string ?? "",
+                   method: .delete,
+                   headers: header)
+        .responseData { response in
             switch response.result {
             case .success(let data):
                 completion(.success(data))

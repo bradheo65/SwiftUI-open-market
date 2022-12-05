@@ -9,10 +9,23 @@ import Alamofire
 
 final class ProductAPI {
     
+    enum OpenMarketAPI {
+        static let url = "https://openmarket.yagom-academy.kr"
+        static let products = "/api/products"
+        static let pageNo = "page_no"
+        static let itemsPerPage = "items_per_page"
+        static let deletePath = "archived"
+    }
+    
     func getProduct(page: Int, size: Int, completion: @escaping (Bool, ProductListResponse?) -> Void) {
-        let URL = "https://openmarket.yagom-academy.kr/api/products?page_no=\(page)&items_per_page=\(size)"
+        var urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
+
+        let pageNo = URLQueryItem(name: OpenMarketAPI.pageNo, value: "\(page)")
+        let itemPerPage = URLQueryItem(name: OpenMarketAPI.itemsPerPage, value: "\(size)")
+
+        urlComponents?.queryItems = [pageNo, itemPerPage]
         
-        AF.request(URL,
+        AF.request(urlComponents?.string ?? "",
                    method: .get,
                    parameters: nil,
                    encoding: URLEncoding.default,
@@ -28,9 +41,12 @@ final class ProductAPI {
     }
     
     func getProductDetail(id: Int, completion: @escaping (Bool, DetailProduct?) -> Void) {
-        let URL = "https://openmarket.yagom-academy.kr/api/products/\(id)"
+        var urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
         
-        AF.request(URL,
+        urlComponents?.path += "/"
+        urlComponents?.path += "\(id)"
+                
+        AF.request(urlComponents?.string ?? "",
                    method: .get,
                    parameters: nil,
                    encoding: URLEncoding.default,
@@ -47,7 +63,8 @@ final class ProductAPI {
     
     func postProduct(images: [UIImage], parameters: [String : Any], completion: @escaping (Result<Data, Error>) -> Void) {
         
-        let url = "https://openmarket.yagom-academy.kr/api/products"
+        let urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
+        
         let header: HTTPHeaders = [
             "identifier": VendorInfo.identifier,
             "Content-Type": "multipart/form-data"
@@ -66,7 +83,7 @@ final class ProductAPI {
                 multipartFormData.append(imageData, withName: "images", fileName: "\(imageData).jpg", mimeType: "content-type header")
             }
         
-        }, to: url, method: .post, headers: header).response { response in
+        }, to: urlComponents?.string ?? "", method: .post, headers: header).response { response in
             guard let statusCode = response.response?.statusCode else {
                 return
             }
@@ -82,12 +99,16 @@ final class ProductAPI {
     
     func patchProduct(id: Int, images: [UIImage], parameters: [String : Any], completion: @escaping (Result<Data, Error>) -> Void) {
         
-        let url = "https://openmarket.yagom-academy.kr/api/products/\(id)"
+        var urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
+        
+        urlComponents?.path += "/"
+        urlComponents?.path += "\(id)"
+        
         let header: HTTPHeaders = [
             "identifier": VendorInfo.identifier
         ]
 
-        AF.request(url, method: .patch, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseData { response in
+        AF.request(urlComponents?.string ?? "", method: .patch, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseData { response in
             switch response.result {
             case .success(let data):
                 print(data)
@@ -99,12 +120,18 @@ final class ProductAPI {
     
     func requestDeleteProductURL(id: Int, parameters: [String : Any], completion: @escaping (Result<Data, Error>) -> Void) {
         
-        let url = "https://openmarket.yagom-academy.kr/api/products/\(id)/archived"
+        var urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
+        
+        urlComponents?.path += "/"
+        urlComponents?.path += "\(id)"
+        urlComponents?.path += "/"
+        urlComponents?.path += "\(OpenMarketAPI.deletePath)"
+        
         let header: HTTPHeaders = [
             "identifier": VendorInfo.identifier
         ]
 
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseData { response in
+        AF.request(urlComponents?.string ?? "", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseData { response in
             switch response.result {
             case .success(let data):
                 completion(.success(data))
@@ -116,12 +143,13 @@ final class ProductAPI {
     
     func deleteProduct(deleteURL: String, completion: @escaping (Result<Data, Error>) -> Void) {
         
-        let url = "https://openmarket.yagom-academy.kr\(deleteURL)"
+        let urlComponents = URLComponents(string: OpenMarketAPI.url + deleteURL)
+        
         let header: HTTPHeaders = [
             "identifier": VendorInfo.identifier
         ]
 
-        AF.request(url, method: .delete, headers: header).responseData { response in
+        AF.request(urlComponents?.string ?? "", method: .delete, headers: header).responseData { response in
             switch response.result {
             case .success(let data):
                 completion(.success(data))

@@ -44,21 +44,21 @@ final class ProductListViewModel: ObservableObject {
     }
     
     func getPrice(Product: Product) -> String {
-        let price = String(format: "%.f", Product.price)
+        let price = Product.price.removeDecimal
         let priceComma = price.insertComma
         
         return priceComma
     }
     
     func getBargainPrice(Product: Product) -> String {
-        let bargainPrice = String(format: "%.f", Product.bargainPrice)
+        let bargainPrice = Product.bargainPrice.removeDecimal
         let bargainPriceComma = bargainPrice.insertComma
         
         return bargainPriceComma
     }
     
     func getStock(Product: Product) -> String {
-        let stock = String(format: "%.f", Product.stock)
+        let stock = Product.stock.removeDecimal
         let stockComma = stock.insertComma
         
         return stockComma

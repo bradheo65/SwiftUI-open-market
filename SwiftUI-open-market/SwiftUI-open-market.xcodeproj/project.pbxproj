@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10380E3FB9017EFA1AB2E229 /* Pods_SwiftUI_open_market.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93A299D4A4859603D7989CD /* Pods_SwiftUI_open_market.framework */; };
+		A30AF2B4293DBD1E00AFC532 /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30AF2B3293DBD1E00AFC532 /* Extension+Double.swift */; };
 		A31B1756293A1F65004137AE /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31B1755293A1F65004137AE /* Extension+String.swift */; };
 		A348D0A12925F278003E8BCB /* SwiftUI_open_marketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0A02925F278003E8BCB /* SwiftUI_open_marketApp.swift */; };
 		A348D0A32925F278003E8BCB /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0A22925F278003E8BCB /* ProductListView.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		382899379A9ABBD69AD782F6 /* Pods-SwiftUI-open-market.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI-open-market.release.xcconfig"; path = "Target Support Files/Pods-SwiftUI-open-market/Pods-SwiftUI-open-market.release.xcconfig"; sourceTree = "<group>"; };
+		A30AF2B3293DBD1E00AFC532 /* Extension+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Double.swift"; sourceTree = "<group>"; };
 		A31B1755293A1F65004137AE /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		A348D09D2925F278003E8BCB /* SwiftUI-open-market.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-open-market.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A348D0A02925F278003E8BCB /* SwiftUI_open_marketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_open_marketApp.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				A31B1755293A1F65004137AE /* Extension+String.swift */,
+				A30AF2B3293DBD1E00AFC532 /* Extension+Double.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A30AF2B4293DBD1E00AFC532 /* Extension+Double.swift in Sources */,
 				A35E368D2934CD7C0007E4D3 /* Currency.swift in Sources */,
 				A348D0B02925F442003E8BCB /* ProductListResponse.swift in Sources */,
 				A3E899492928EA2C00FA1CCD /* ProductDetailView.swift in Sources */,

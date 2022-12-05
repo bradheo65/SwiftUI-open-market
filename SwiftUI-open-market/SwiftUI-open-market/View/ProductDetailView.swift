@@ -38,12 +38,11 @@ struct ProductDetailView: View {
                             Image(systemName: "photo")
                         }
                     }
-                    .scaledToFit()
                 }
                 .padding()
             }
             .tabViewStyle(PageTabViewStyle())
-            .frame(height:350)
+            .frame(width: 350, height: 350)
             
             Text("\(currentImage + 1) / \(productDetailViewModel.getCount())")
                 .foregroundColor(.secondary)

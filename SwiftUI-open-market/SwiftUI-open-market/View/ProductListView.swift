@@ -27,8 +27,10 @@ struct ProductListView: View {
                                     image.resizable()
                                 case .failure:
                                     Image(systemName: "photo")
+                                        .resizable()
                                 @unknown default:
-                                    EmptyView()
+                                    Image(systemName: "photo")
+                                        .resizable()
                                 }
                             }
                             .frame(width: 60, height: 60)

@@ -128,7 +128,7 @@ struct ProductAddView: View {
                                                      price: Int(price) ?? 0,
                                                      currency: currency.rawValue,
                                                      discountPrice: Int(discountedPrice) ?? 0,
-                                                     stock: Int(discountedPrice) ?? 0
+                                                     stock: Int(stock) ?? 0
                                                      )
                         } else {
                             productAddViewModel.post(image: imageArray,
@@ -137,7 +137,7 @@ struct ProductAddView: View {
                                                      price: Int(price) ?? 0,
                                                      currency: currency.rawValue,
                                                      discountPrice: Int(discountedPrice) ?? 0,
-                                                     stock: Int(discountedPrice) ?? 0
+                                                     stock: Int(stock) ?? 0
                                                      )
                         }
                         dismiss()
@@ -148,9 +148,9 @@ struct ProductAddView: View {
                 if item != nil {
                     detailImageArray = item?.images ?? []
                     title = item?.name ?? ""
-                    price = String(format: "%.f", item?.price ?? 0)
-                    discountedPrice = String(format: "%.f", item?.discountedPrice ?? 0)
-                    stock = String(format: "%.f", item?.stock ?? 0)
+                    price = item?.price.removeDecimal ?? ""
+                    discountedPrice = item?.discountedPrice.removeDecimal ?? ""
+                    stock = item?.stock.removeDecimal ?? ""
                     description = item?.welcomeDescription ?? ""
                 }
             }

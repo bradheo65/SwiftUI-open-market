@@ -14,7 +14,7 @@ struct ProductListView: View {
     @State private var showAddView = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(productListViewModel.lists, id: \.id) { data in
                     NavigationLink (destination: ProductDetailView(item: data.id), label: {
@@ -110,8 +110,8 @@ struct ProductListView: View {
             })
             .navigationTitle("List")
             .toolbar {
-                Button {
-                    showAddView = true
+                NavigationLink {
+                    ProductAddView()
                 } label: {
                     Image(systemName: "plus")
                 }

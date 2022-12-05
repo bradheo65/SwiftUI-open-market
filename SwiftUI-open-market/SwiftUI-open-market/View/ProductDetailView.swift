@@ -119,7 +119,7 @@ struct ProductDetailView: View {
                 }
             }
         }
-        .sheet(isPresented: $showDetailView) {
+        .navigationDestination(isPresented: $showDetailView) {
             ProductAddView(item: productDetailViewModel.item)
         }
         .alert("정말 삭제할까요?", isPresented: $showDeleteAlert) {

@@ -39,10 +39,9 @@ struct ProductDetailView: View {
                         }
                     }
                 }
-                .padding()
             }
             .tabViewStyle(PageTabViewStyle())
-            .frame(width: 350, height: 350)
+            .frame(height: 350)
             
             Text("\(currentImage + 1) / \(productDetailViewModel.getCount())")
                 .foregroundColor(.secondary)

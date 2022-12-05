@@ -102,11 +102,23 @@ struct ProductAddView: View {
                     .textFieldStyle(.roundedBorder)
                     .keyboardType(.numbersAndPunctuation)
                 
-                TextEditor(text: $description)
-                    .frame(maxHeight: .infinity)
-                    .cornerRadius(15)
-                    .border(Color(uiColor: .secondarySystemBackground), width: 1)
-                
+                ZStack {
+                    TextEditor(text: $description)
+                        .frame(maxHeight: .infinity)
+                        .cornerRadius(15)
+                        .border(Color(uiColor: .secondarySystemBackground), width: 1)
+                    
+                    if description.isEmpty {
+                        Text("재품 설명을 작성해주세요")
+                            .foregroundColor(Color(uiColor: .placeholderText))
+                            .padding(.top, 5)
+                            .padding(.leading, 5)
+                            .frame(maxWidth: .infinity,
+                                   maxHeight: .infinity,
+                                   alignment: .topLeading)
+                            .cornerRadius(15)
+                    }
+                }
             }
             .padding()
             .navigationTitle(item != nil ? "상품편집" : "상품등록" )

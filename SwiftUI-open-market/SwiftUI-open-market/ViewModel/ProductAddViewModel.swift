@@ -12,6 +12,11 @@ final class ProductAddViewModel: ObservableObject {
     
     private let productAPI = ProductAPI()
     
+    @Published var isPostSuccess: Bool = false
+    @Published var isPostFail: Bool = false
+    @Published var isPatchSuccess: Bool = false
+    @Published var isPatchFail: Bool = false
+
     func post(image: [UIImage], name: String, descriptions: String, price: Int, currency: String, discountPrice: Int, stock: Int) {
         let parameters =
         [
@@ -25,8 +30,10 @@ final class ProductAddViewModel: ObservableObject {
             switch response {
             case .success(let data):
                 print(data)
+                self.isPostSuccess = true
             case .failure(let error):
                 print(error)
+                self.isPostFail = true
             }
         }
     }
@@ -49,9 +56,11 @@ final class ProductAddViewModel: ObservableObject {
         productAPI.patchProduct(id: id, images: image, parameters: parameters) { response in
             switch response {
             case .success(let data):
-                print(String(data: data, encoding: .utf8)!)
+                print(data)
+                self.isPatchSuccess = true
             case .failure(let error):
                 print(error)
+                self.isPatchFail = true
             }
         }
     }

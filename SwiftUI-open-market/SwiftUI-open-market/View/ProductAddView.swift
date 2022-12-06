@@ -145,7 +145,6 @@ struct ProductAddView: View {
                                                  stock: Int(stock) ?? 0
                         )
                     }
-                    dismiss()
                 }
             }
         }
@@ -157,6 +156,30 @@ struct ProductAddView: View {
                 discountedPrice = item?.discountedPrice.removeDecimal ?? ""
                 stock = item?.stock.removeDecimal ?? ""
                 description = item?.welcomeDescription ?? ""
+            }
+        }
+        .alert("업로드 완료",
+               isPresented: $productAddViewModel.isPostSuccess) {
+            Button("OK") {
+                dismiss()
+            }
+        }
+        .alert("업로드 실패",
+               isPresented: $productAddViewModel.isPostFail) {
+            Button("OK", role: .destructive) {
+                dismiss()
+            }
+        }
+        .alert("수정 완료",
+               isPresented: $productAddViewModel.isPatchSuccess) {
+            Button("OK") {
+                dismiss()
+            }
+        }
+        .alert("수정 실패",
+               isPresented: $productAddViewModel.isPatchFail) {
+            Button("OK", role: .destructive) {
+                dismiss()
             }
         }
     }

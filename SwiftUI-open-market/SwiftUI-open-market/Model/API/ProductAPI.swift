@@ -86,16 +86,12 @@ final class ProductAPI {
         }, to: urlComponents?.string ?? "",
                   method: .post,
                   headers: header)
-        .response { response in
-            guard let statusCode = response.response?.statusCode else {
-                return
-            }
-            
-            switch statusCode {
-            case 200:
-                completion(.success(response.data ?? Data()))
-            default:
-                completion(.success(response.data ?? Data()))
+        .responseData { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                print(error)
             }
         }
     }
@@ -119,7 +115,7 @@ final class ProductAPI {
         .responseData { response in
             switch response.result {
             case .success(let data):
-                print(data)
+                completion(.success(data))
             case .failure(let error):
                 print(error)
             }

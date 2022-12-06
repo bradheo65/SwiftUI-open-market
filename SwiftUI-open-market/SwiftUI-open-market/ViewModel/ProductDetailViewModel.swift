@@ -10,8 +10,11 @@ import Foundation
 final class ProductDetailViewModel: ObservableObject {
     
     private lazy var productAPI = ProductAPI()
-    @Published var item: DetailProduct?
     
+    @Published var item: DetailProduct?
+    @Published var isDeleteSuccess: Bool = false
+    @Published var isDeleteFail: Bool = false
+
     func getProduct(id: Int) {
         productAPI.getProductDetail(id: id) { isSuccess, model in
             switch isSuccess {
@@ -38,9 +41,11 @@ final class ProductDetailViewModel: ObservableObject {
                 self.productAPI.deleteProduct(deleteURL: parsingURL) { response in
                     switch response {
                     case .success(let success):
-                        print(String(data: success, encoding: .utf8) ?? "")
+                        print(success)
+                        self.isDeleteSuccess = true
                     case .failure(let failure):
                         print(failure)
+                        self.isDeleteFail = true
                     }
                 }
             case .failure(let error):

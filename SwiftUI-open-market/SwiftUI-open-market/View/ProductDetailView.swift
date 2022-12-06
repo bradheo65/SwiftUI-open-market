@@ -125,6 +125,15 @@ struct ProductDetailView: View {
         .alert("정말 삭제할까요?", isPresented: $showDeleteAlert) {
             Button("OK", role: .destructive) {
                 productDetailViewModel.deleteProduct(id: productDetailViewModel.getID())
+            }
+        }
+        .alert("삭제가 완료되었습니다.", isPresented: $productDetailViewModel.isDeleteSuccess) {
+            Button("OK") {
+                dismiss()
+            }
+        }
+        .alert("삭제 실패.", isPresented: $productDetailViewModel.isDeleteFail) {
+            Button("OK", role: .destructive) {
                 dismiss()
             }
         }

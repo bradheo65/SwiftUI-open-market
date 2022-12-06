@@ -14,7 +14,7 @@
 - [💡 키워드](#-키워드)
 - [🤔 핵심경험](#-핵심경험)
 - [📚 참고문서](#-참고문서)
-
+- [🚀 TroubleShooting](#-TroubleShooting)
 
 ## 🧑🏻‍💻🧑🏻‍💻 개발자 소개
 
@@ -29,10 +29,8 @@
 .
 ├── Assets.xcassets
 │   ├── AccentColor.colorset
-│   │   ├── Contents 2.json
 │   │   └── Contents.json
 │   ├── AppIcon.appiconset
-│   │   ├── Contents 2.json
 │   │   └── Contents.json
 │   ├── Contents.json
 │   └── Image.imageset
@@ -41,6 +39,9 @@
 ├── Enum
 │   ├── Currency.swift
 │   └── VendorInfo.swift
+├── Extension
+│   ├── Extension+Double.swift
+│   └── Extension+String.swift
 ├── Model
 │   ├── API
 │   │   └── ProductAPI.swift
@@ -48,7 +49,6 @@
 │   │   ├── DetailImage.swift
 │   │   ├── DetailProduct.swift
 │   │   └── Vendors.swift
-│   ├── DetailProduct 2.swift
 │   ├── ImageFile.swift
 │   └── Product
 │       ├── Product.swift
@@ -59,13 +59,11 @@
 │       └── Contents.json
 ├── SwiftUI_open_marketApp.swift
 ├── View
-│   ├── ImagePicker 2.swift
 │   ├── ImagePicker.swift
 │   ├── ProductAddView.swift
 │   ├── ProductDetailView.swift
 │   └── ProductListView.swift
 └── ViewModel
-    ├── ProductAddViewModel 2.swift
     ├── ProductAddViewModel.swift
     ├── ProductDetailViewModel.swift
     └── ProductListViewModel.swift
@@ -76,12 +74,11 @@
 ### 형태별 동작 화면
 |GET|POST|
 |:---:|:---:|
-|<image src = "https://i.imgur.com/4SxzZZT.gif" width="250" height="500">| <image src = "https://i.imgur.com/1bXdXZC.gif" width="250" height="500">
+|<image src = "https://i.imgur.com/GIDWDQp.gif" width="250" height="500">| <image src = "https://i.imgur.com/DgTyvP7.gif" width="250" height="500">
 
-|PATCH|POST|
+|PATCH|Delete|
 |:---:|:---:|
-|<image src = "https://i.imgur.com/SFR2iit.gif" width="250" height="500">| <image src = "https://i.imgur.com/GL17mwH.gif" width="250" height="500">
-
+|<image src = "https://i.imgur.com/BbewsmB.gif" width="250" height="500">| <image src = "https://i.imgur.com/ea2k8I6.gif" width="250" height="500">
 
 ## 💡 키워드
 - SwiftUI
@@ -91,6 +88,7 @@
 - Alamofire
 - UIImagePicker
 - ResizeImage
+- Alert
     
 ## 🤔 핵심경험
 - [x] 파싱한 JSON 데이터와 매핑할 모델 설계
@@ -105,3 +103,15 @@
 - API
     - Yagom Academy iOS - OpenMarket API
 
+## 🚀 TroubleShooting
+    
+### 🚀 `dismiss()` 시점
+    
+고민: 기존에는 'Done'버튼이 눌린 후 로직이 처리된 후 `dismiss()`가 실행되는 것이 아닌 바로 버튼이 눌린 순간 `dissmiss()`를 실행하기 때문에 화면 이동이 부자연스러웠습니다.
+    
+해결: "ViewModel에서 Api통신 시 작업 완료 되었을 때 Bool타입을 통해 관리하면 되겠다"라는 생각을 하게 되었고, `@Published` 프로퍼티 와퍼로 이용해 뷰모델의 프로퍼티 바인딩과 `alert`을 활용해 해결해주었습니다. 
+
+|이전 POST dismiss|신규 POST dismiss|
+|:---:|:---:|
+|<image src = "https://i.imgur.com/k93HOGq.gif" width="300" height="400">| <image src = "https://i.imgur.com/DgTyvP7.gif" width="300" height="400">
+    

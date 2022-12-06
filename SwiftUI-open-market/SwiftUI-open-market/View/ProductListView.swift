@@ -108,7 +108,7 @@ struct ProductListView: View {
                 await Task.sleep(1_000_000_000)
                 productListViewModel.getProduct()
             })
-            .navigationTitle("List")
+            .navigationTitle("Open Market")
             .toolbar {
                 NavigationLink {
                     ProductAddView()

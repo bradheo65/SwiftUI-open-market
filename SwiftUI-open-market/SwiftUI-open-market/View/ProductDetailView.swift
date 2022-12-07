@@ -51,9 +51,15 @@ struct ProductDetailView: View {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 
-                Text(productDetailViewModel.getStock())
-                    .frame(alignment: .trailing)
-                    .foregroundColor(.secondary)
+                if productDetailViewModel.getStock() == "0" {
+                    Text("품절")
+                        .frame(alignment: .trailing)
+                        .foregroundColor(.yellow)
+                } else {
+                    Text(productDetailViewModel.getStock())
+                        .frame(alignment: .trailing)
+                        .foregroundColor(.secondary)
+                }
             }
             
             VStack(alignment: .trailing) {

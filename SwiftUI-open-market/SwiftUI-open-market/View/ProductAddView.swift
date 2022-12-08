@@ -73,7 +73,7 @@ struct ProductAddView: View {
                 TextField("상품가격", text: $productAddViewModel.price)
                     .background(Color(uiColor: .secondarySystemBackground))
                     .textFieldStyle(.roundedBorder)
-                    .keyboardType(.numbersAndPunctuation)
+                    .keyboardType(.numberPad)
                 
                 Picker("가격", selection: $productAddViewModel.currency) {
                     Text(Currency.KRW.rawValue)
@@ -87,12 +87,12 @@ struct ProductAddView: View {
             TextField("할인금액", text: $productAddViewModel.discountedPrice)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textFieldStyle(.roundedBorder)
-                .keyboardType(.numbersAndPunctuation)
+                .keyboardType(.numberPad)
             
             TextField("재고수량", text: $productAddViewModel.stock)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textFieldStyle(.roundedBorder)
-                .keyboardType(.numbersAndPunctuation)
+                .keyboardType(.numberPad)
             
             ZStack {
                 TextEditor(text: $productAddViewModel.description)

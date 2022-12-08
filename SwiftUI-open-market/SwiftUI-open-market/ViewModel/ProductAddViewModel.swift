@@ -15,10 +15,38 @@ final class ProductAddViewModel: ObservableObject {
     @Published var detailImageArray: [DetailImage] = []
     @Published var title: String = ""
     @Published var currency = Currency.KRW
-    @Published var price: String = ""
-    @Published var discountedPrice: String = ""
-    @Published var stock: String = ""
-    @Published var description: String = ""
+    @Published var price: String = "" {
+        didSet {
+            let filter = price.filter { $0.isNumber }
+            if price != filter {
+                price = filter
+            }
+        }
+    }
+    @Published var discountedPrice: String = "" {
+        didSet {
+            let filter = price.filter { $0.isNumber }
+            if price != filter {
+                price = filter
+            }
+        }
+    }
+    @Published var stock: String = "" {
+        didSet {
+            let filter = price.filter { $0.isNumber }
+            if price != filter {
+                price = filter
+            }
+        }
+    }
+    @Published var description: String = "" {
+        didSet {
+            let filter = price.filter { $0.isNumber }
+            if price != filter {
+                price = filter
+            }
+        }
+    }
     
     @Published var isPostSuccess: Bool = false
     @Published var isPostFail: Bool = false

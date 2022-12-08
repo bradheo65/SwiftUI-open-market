@@ -25,28 +25,21 @@ final class ProductAddViewModel: ObservableObject {
     }
     @Published var discountedPrice: String = "" {
         didSet {
-            let filter = price.filter { $0.isNumber }
-            if price != filter {
-                price = filter
+            let filter = discountedPrice.filter { $0.isNumber }
+            if discountedPrice != filter {
+                discountedPrice = filter
             }
         }
     }
     @Published var stock: String = "" {
         didSet {
-            let filter = price.filter { $0.isNumber }
-            if price != filter {
-                price = filter
+            let filter = stock.filter { $0.isNumber }
+            if stock != filter {
+                stock = filter
             }
         }
     }
-    @Published var description: String = "" {
-        didSet {
-            let filter = price.filter { $0.isNumber }
-            if price != filter {
-                price = filter
-            }
-        }
-    }
+    @Published var description: String = ""
     
     @Published var isPostSuccess: Bool = false
     @Published var isPostFail: Bool = false

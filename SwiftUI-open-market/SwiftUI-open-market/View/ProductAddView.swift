@@ -9,36 +9,29 @@ import SwiftUI
 
 struct ProductAddView: View {
     
+    var item: DetailProduct?
+
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject private var productAddViewModel = ProductAddViewModel()
+    
+    @StateObject private var productAddViewModel = ProductAddViewModel()
     
     @State private var showingImagePicker = false
     @State private var pickedImage: Image?
     @State private var imageArray: [UIImage] = []
-    @State private var detailImageArray: [DetailImage] = []
-    
-    @State private var title: String = ""
-    @State private var price: String = ""
-    @State private var currency = Currency.KRW
-    @State private var discountedPrice: String = ""
-    @State private var stock: String = ""
-    @State private var description: String = ""
-    
-    var item: DetailProduct?
-    
+        
     var body: some View {
         VStack {
             ScrollView(.horizontal) {
                 HStack {
-                    if detailImageArray.count == 0 {
+                    if productAddViewModel.detailImageArray.count == 0 {
                         ForEach(0..<imageArray.count, id: \.self) { images in
                             Image(uiImage: imageArray[images])
                                 .resizable()
                                 .frame(width: 150, height:150)
                         }
                     } else {
-                        ForEach(0..<detailImageArray.count, id: \.self) { images in
-                            AsyncImage(url: URL(string: detailImageArray[images].url)) { phase in
+                        ForEach(0..<productAddViewModel.detailImageArray.count, id: \.self) { images in
+                            AsyncImage(url: URL(string: productAddViewModel.detailImageArray[images].url)) { phase in
                                 switch phase {
                                 case .empty:
                                     ProgressView()
@@ -56,7 +49,7 @@ struct ProductAddView: View {
                         }
                     }
                     
-                    if imageArray.count < 5 || detailImageArray.count < 5 {
+                    if imageArray.count < 5 || productAddViewModel.detailImageArray.count < 5 {
                         Button(action: {
                             self.showingImagePicker.toggle()
                         }, label: {
@@ -72,17 +65,17 @@ struct ProductAddView: View {
                     }
                 }
             }
-            TextField("상품명", text: $title)
+            TextField("상품명", text: $productAddViewModel.title)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textFieldStyle(.roundedBorder)
             
             HStack {
-                TextField("상품가격", text: $price)
+                TextField("상품가격", text: $productAddViewModel.price)
                     .background(Color(uiColor: .secondarySystemBackground))
                     .textFieldStyle(.roundedBorder)
                     .keyboardType(.numbersAndPunctuation)
                 
-                Picker("가격", selection: $currency) {
+                Picker("가격", selection: $productAddViewModel.currency) {
                     Text(Currency.KRW.rawValue)
                         .tag(Currency.KRW)
                     Text(Currency.USD.rawValue)
@@ -91,23 +84,23 @@ struct ProductAddView: View {
                 .pickerStyle(.segmented)
             }
             
-            TextField("할인금액", text: $discountedPrice)
+            TextField("할인금액", text: $productAddViewModel.discountedPrice)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.numbersAndPunctuation)
             
-            TextField("재고수량", text: $stock)
+            TextField("재고수량", text: $productAddViewModel.stock)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.numbersAndPunctuation)
             
             ZStack {
-                TextEditor(text: $description)
+                TextEditor(text: $productAddViewModel.description)
                     .frame(maxHeight: .infinity)
                     .cornerRadius(15)
                     .border(Color(uiColor: .secondarySystemBackground), width: 1)
                 
-                if description.isEmpty {
+                if productAddViewModel.description.isEmpty {
                     Text("재품 설명을 작성해주세요")
                         .foregroundColor(Color(uiColor: .placeholderText))
                         .padding(.top, 5)
@@ -128,21 +121,21 @@ struct ProductAddView: View {
                     if item != nil {
                         productAddViewModel.patch(id: item?.id ?? 0,
                                                   image: imageArray,
-                                                  name: title,
-                                                  descriptions: description,
-                                                  price: Int(price) ?? 0,
-                                                  currency: currency.rawValue,
-                                                  discountPrice: Int(discountedPrice) ?? 0,
-                                                  stock: Int(stock) ?? 0
+                                                  name: productAddViewModel.title,
+                                                  descriptions: productAddViewModel.description,
+                                                  price: Int(productAddViewModel.price) ?? 0,
+                                                  currency: productAddViewModel.currency.rawValue,
+                                                  discountPrice: Int(productAddViewModel.discountedPrice) ?? 0,
+                                                  stock: Int(productAddViewModel.stock) ?? 0
                         )
                     } else {
                         productAddViewModel.post(image: imageArray,
-                                                 name: title,
-                                                 descriptions: description,
-                                                 price: Int(price) ?? 0,
-                                                 currency: currency.rawValue,
-                                                 discountPrice: Int(discountedPrice) ?? 0,
-                                                 stock: Int(stock) ?? 0
+                                                 name: productAddViewModel.title,
+                                                 descriptions: productAddViewModel.description,
+                                                 price: Int(productAddViewModel.price) ?? 0,
+                                                 currency: productAddViewModel.currency.rawValue,
+                                                 discountPrice: Int(productAddViewModel.discountedPrice) ?? 0,
+                                                 stock: Int(productAddViewModel.stock) ?? 0
                         )
                     }
                 }
@@ -150,12 +143,7 @@ struct ProductAddView: View {
         }
         .onAppear {
             if item != nil {
-                detailImageArray = item?.images ?? []
-                title = item?.name ?? ""
-                price = item?.price.removeDecimal ?? ""
-                discountedPrice = item?.discountedPrice.removeDecimal ?? ""
-                stock = item?.stock.removeDecimal ?? ""
-                description = item?.welcomeDescription ?? ""
+                productAddViewModel.fetch(item: item!)
             }
         }
         .alert("업로드 완료",

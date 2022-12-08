@@ -12,11 +12,31 @@ final class ProductAddViewModel: ObservableObject {
     
     private let productAPI = ProductAPI()
     
+    @Published var detailImageArray: [DetailImage] = []
+    @Published var title: String = ""
+    @Published var currency = Currency.KRW
+    @Published var price: String = ""
+    @Published var discountedPrice: String = ""
+    @Published var stock: String = ""
+    @Published var description: String = ""
+    
     @Published var isPostSuccess: Bool = false
     @Published var isPostFail: Bool = false
     @Published var isPatchSuccess: Bool = false
     @Published var isPatchFail: Bool = false
-
+    
+    func fetch(item: DetailProduct) {
+        detailImageArray = item.images
+        title = item.name
+        price = item.price.removeDecimal
+        currency = Currency(rawValue: item.currency)!
+        discountedPrice = item.discountedPrice.removeDecimal
+        stock = item.stock.removeDecimal
+        description = item.welcomeDescription
+        
+        print(price)
+    }
+    
     func post(image: [UIImage], name: String, descriptions: String, price: Int, currency: String, discountPrice: Int, stock: Int) {
         let parameters =
         [

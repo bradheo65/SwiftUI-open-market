@@ -25,7 +25,7 @@ struct ProductDetailView: View {
         VStack {
             TabView(selection: self.$currentImage) {
                 ForEach(0..<(productDetailViewModel.getCount()), id: \.self) { images in
-                    AsyncImage(url: URL(string: productDetailViewModel.getImageURL(index: images))) { phase in
+                    CacheAsyncImage(url: URL(string: productDetailViewModel.getImageURL(index: images))!) { phase in
                         
                         switch phase {
                         case .empty:

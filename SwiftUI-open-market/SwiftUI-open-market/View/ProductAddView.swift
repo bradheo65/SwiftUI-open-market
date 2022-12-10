@@ -31,7 +31,7 @@ struct ProductAddView: View {
                         }
                     } else {
                         ForEach(0..<productAddViewModel.detailImageArray.count, id: \.self) { images in
-                            AsyncImage(url: URL(string: productAddViewModel.detailImageArray[images].url)) { phase in
+                            CacheAsyncImage(url: URL(string: productAddViewModel.detailImageArray[images].url)!) { phase in
                                 switch phase {
                                 case .empty:
                                     ProgressView()

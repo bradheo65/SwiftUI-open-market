@@ -19,20 +19,20 @@ struct ProductListView: View {
                 ForEach(productListViewModel.lists, id: \.id) { data in
                     NavigationLink (destination: ProductDetailView(item: data.id), label: {
                         HStack {
-                            AsyncImage(url: productListViewModel.getURL(Product: data)) { phase in
-                                switch phase {
-                                case .empty:
-                                    ProgressView()
-                                case .success(let image):
-                                    image.resizable()
-                                case .failure:
-                                    Image(systemName: "photo")
-                                        .resizable()
-                                @unknown default:
-                                    Image(systemName: "photo")
-                                        .resizable()
+                            CacheAsyncImage(
+                                url: productListViewModel.getURL(Product: data)) {
+                                    phase in
+                                    switch phase {
+                                    case .success(let image):
+                                        image.resizable()
+                                    case .empty:
+                                        ProgressView()
+                                    case .failure(_):
+                                        Image(systemName: "photo")
+                                    @unknown default:
+                                        Image(systemName: "photo")
+                                    }
                                 }
-                            }
                             .frame(width: 60, height: 60)
                             
                             VStack {

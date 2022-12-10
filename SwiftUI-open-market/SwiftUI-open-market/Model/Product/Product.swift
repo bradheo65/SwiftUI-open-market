@@ -5,7 +5,7 @@
 //  Created by brad on 2022/11/17.
 //
 
-struct Product: Codable {
+struct Product: Codable, Equatable {
     let id, vendorID: Int
     let vendorName, name, pageDescription: String
     let thumbnail: String

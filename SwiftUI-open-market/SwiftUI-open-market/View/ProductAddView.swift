@@ -37,8 +37,7 @@ struct ProductAddView: View {
                                     ProgressView()
                                 case .success(let image):
                                     image.resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(maxWidth: 150, maxHeight: 150)
+                                        .frame(width: 150, height: 150)
                                 case .failure:
                                     Image(systemName: "photo")
                                 @unknown default:

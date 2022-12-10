@@ -54,8 +54,6 @@ final class ProductAddViewModel: ObservableObject {
         discountedPrice = item.discountedPrice.removeDecimal
         stock = item.stock.removeDecimal
         description = item.welcomeDescription
-        
-        print(price)
     }
     
     func post(image: [UIImage], name: String, descriptions: String, price: Int, currency: String, discountPrice: Int, stock: Int) {

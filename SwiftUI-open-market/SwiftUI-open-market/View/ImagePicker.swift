@@ -12,9 +12,10 @@ struct ImagePicker: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIImagePickerController
     
     @Environment(\.presentationMode)
-    private var presentationMode // 해당 뷰컨트롤러의 노출 여부
+    private var presentationMode
+    
     let sourceType: UIImagePickerController.SourceType
-    let imagePicked: (UIImage) -> () // 이미지가 선택됐을때 결과 호출
+    let imagePicked: (UIImage) -> ()
     
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         

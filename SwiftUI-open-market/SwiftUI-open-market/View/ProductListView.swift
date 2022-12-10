@@ -17,7 +17,7 @@ struct ProductListView: View {
         NavigationStack {
             List(productListViewModel.lists, id: \.id) { data in
                 NavigationLink (destination: ProductDetailView(item: data.id), label: {
-                    ProductListCell(data: data)
+                    ProductListCellView(data: data)
                         .task {
                             if data == productListViewModel.lists.last {
                                 await productListViewModel.getProduct()

@@ -1,5 +1,5 @@
 //
-//  ProductCellModel.swift
+//  ProductListCellViewModel.swift
 //  SwiftUI-open-market
 //
 //  Created by brad on 2022/12/10.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ProductCellModel {
+final class ProductListCellViewModel {
     
     func getName(Product: Product) -> String {
         return Product.name

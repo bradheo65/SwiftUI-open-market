@@ -1,5 +1,5 @@
 //
-//  ProductListCell.swift
+//  ProductListCellView.swift
 //  SwiftUI-open-market
 //
 //  Created by brad on 2022/12/10.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct ProductListCell: View {
+struct ProductListCellView: View {
     let data: Product
     
-    private let productListCellModel = ProductCellModel()
+    private let productListCellViewModel = ProductListCellViewModel()
     
     var body: some View {
         HStack {
-            CacheAsyncImage(url: productListCellModel.getURL(Product: data)) {
+            CacheAsyncImage(url: productListCellViewModel.getURL(Product: data)) {
                     phase in
                     switch phase {
                     case .success(let image):
@@ -31,7 +31,7 @@ struct ProductListCell: View {
             
             VStack {
                 HStack {
-                    Text(productListCellModel.getName(Product: data))
+                    Text(productListCellViewModel.getName(Product: data))
                         .frame(maxWidth: .infinity,
                                alignment: .leading)
                         .font(.title3)
@@ -39,7 +39,7 @@ struct ProductListCell: View {
                     if data.stock != 0 {
                         HStack {
                             Text("잔여수량:")
-                            Text(productListCellModel.getStock(Product: data))
+                            Text(productListCellViewModel.getStock(Product: data))
                         }
                         .frame(alignment: .trailing)
                         .font(.system(size: 15))
@@ -55,16 +55,16 @@ struct ProductListCell: View {
                     if data.discountedPrice != 0 {
                         HStack {
                             HStack {
-                                Text(productListCellModel.getCurrency(Product: data))
-                                Text(productListCellModel.getPrice(Product: data))
+                                Text(productListCellViewModel.getCurrency(Product: data))
+                                Text(productListCellViewModel.getPrice(Product: data))
                             }
                             .font(.system(size: 15))
                             .foregroundColor(.red)
                             .strikethrough()
                             
                             HStack {
-                                Text(productListCellModel.getCurrency(Product: data))
-                                Text(productListCellModel.getBargainPrice(Product: data))
+                                Text(productListCellViewModel.getCurrency(Product: data))
+                                Text(productListCellViewModel.getBargainPrice(Product: data))
                             }
                             .font(.system(size: 15))
                             .foregroundColor(.secondary)
@@ -74,8 +74,8 @@ struct ProductListCell: View {
                                alignment: .leading)
                     } else {
                         HStack {
-                            Text(productListCellModel.getCurrency(Product: data))
-                            Text(productListCellModel.getPrice(Product: data))
+                            Text(productListCellViewModel.getCurrency(Product: data))
+                            Text(productListCellViewModel.getPrice(Product: data))
                         }
                         .font(.system(size: 15))
                         .foregroundColor(.secondary)

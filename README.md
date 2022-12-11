@@ -15,6 +15,7 @@
 - [🤔 핵심경험](#-핵심경험)
 - [📚 참고문서](#-참고문서)
 - [🚀 TroubleShooting](#-TroubleShooting)
+- [⚙️ 업데이트](#-업데이트)
 
 ## 🧑🏻‍💻🧑🏻‍💻 개발자 소개
 
@@ -27,6 +28,7 @@
 
 ```
 .
+.
 ├── Assets.xcassets
 │   ├── AccentColor.colorset
 │   │   └── Contents.json
@@ -36,6 +38,8 @@
 │   └── Image.imageset
 │       ├── Contents.json
 │       └── TestImage.png
+├── Cache
+│   └── CacheAsyncImage.swift
 ├── Enum
 │   ├── Currency.swift
 │   └── VendorInfo.swift
@@ -62,6 +66,8 @@
 │   ├── ImagePicker.swift
 │   ├── ProductAddView.swift
 │   ├── ProductDetailView.swift
+│   ├── ProductListCellView.swift
+│   ├── ProductListCellViewModel.swift
 │   └── ProductListView.swift
 └── ViewModel
     ├── ProductAddViewModel.swift
@@ -115,3 +121,8 @@
 |:---:|:---:|
 |<image src = "https://i.imgur.com/k93HOGq.gif" width="300" height="400">| <image src = "https://i.imgur.com/DgTyvP7.gif" width="300" height="400">
     
+## ⚙️ 업데이트
+    
+- 2022. 12. 08 - 가격, 할인금액, 재고수량 숫자만 입력 가능하게 끔 로직 추가 및 키보드 타입 변경
+    
+- 2022. 12. 10 - image Cache 구현

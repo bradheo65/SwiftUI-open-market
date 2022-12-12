@@ -9,8 +9,16 @@ import SwiftUI
 
 struct ProductAddView: View {
     
+    private enum Field {
+        case title
+        case price
+        case discountPrice
+        case stock
+        case description
+    }
+    
     var item: DetailProduct?
-
+    
     @Environment(\.dismiss) private var dismiss
     
     @StateObject private var productAddViewModel = ProductAddViewModel()
@@ -18,7 +26,9 @@ struct ProductAddView: View {
     @State private var showingImagePicker = false
     @State private var pickedImage: Image?
     @State private var imageArray: [UIImage] = []
-        
+    
+    @FocusState private var focusedField: Field?
+
     var body: some View {
         VStack {
             ScrollView(.horizontal) {
@@ -67,11 +77,13 @@ struct ProductAddView: View {
             TextField("상품명", text: $productAddViewModel.title)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textFieldStyle(.roundedBorder)
+                .focused($focusedField, equals: .title)
             
             HStack {
                 TextField("상품가격", text: $productAddViewModel.price)
                     .background(Color(uiColor: .secondarySystemBackground))
                     .textFieldStyle(.roundedBorder)
+                    .focused($focusedField, equals: .price)
                     .keyboardType(.numberPad)
                 
                 Picker("가격", selection: $productAddViewModel.currency) {
@@ -86,11 +98,13 @@ struct ProductAddView: View {
             TextField("할인금액", text: $productAddViewModel.discountedPrice)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textFieldStyle(.roundedBorder)
+                .focused($focusedField, equals: .discountPrice)
                 .keyboardType(.numberPad)
             
             TextField("재고수량", text: $productAddViewModel.stock)
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textFieldStyle(.roundedBorder)
+                .focused($focusedField, equals: .stock)
                 .keyboardType(.numberPad)
             
             ZStack {
@@ -98,7 +112,8 @@ struct ProductAddView: View {
                     .frame(maxHeight: .infinity)
                     .cornerRadius(15)
                     .border(Color(uiColor: .secondarySystemBackground), width: 1)
-                
+                    .focused($focusedField, equals: .description)
+
                 if productAddViewModel.description.isEmpty {
                     Text("재품 설명을 작성해주세요")
                         .foregroundColor(Color(uiColor: .placeholderText))
@@ -136,6 +151,29 @@ struct ProductAddView: View {
                                                  discountPrice: Int(productAddViewModel.discountedPrice) ?? 0,
                                                  stock: Int(productAddViewModel.stock) ?? 0
                         )
+                    }
+                }
+            }
+            ToolbarItem(placement: .keyboard) {
+                Button("취소") {
+                    hideKeyboard()
+                }
+            }
+            ToolbarItem(placement: .keyboard) {
+                Button("완료") {
+                    switch focusedField {
+                    case .title:
+                        focusedField = .price
+                    case .price:
+                        focusedField = .discountPrice
+                    case .discountPrice:
+                        focusedField = .stock
+                    case .stock:
+                        focusedField = .description
+                    case .description:
+                        hideKeyboard()
+                    case .none:
+                        hideKeyboard()
                     }
                 }
             }

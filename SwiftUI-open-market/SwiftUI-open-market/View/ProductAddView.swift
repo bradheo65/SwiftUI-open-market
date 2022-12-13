@@ -30,7 +30,7 @@ struct ProductAddView: View {
     @FocusState private var focusedField: Field?
 
     var body: some View {
-        VStack {
+        ScrollView {
             ScrollView(.horizontal) {
                 HStack {
                     if productAddViewModel.detailImageArray.count == 0 {
@@ -109,7 +109,7 @@ struct ProductAddView: View {
             
             ZStack {
                 TextEditor(text: $productAddViewModel.description)
-                    .frame(maxHeight: .infinity)
+                    .frame(minHeight: 300, maxHeight: .infinity)
                     .cornerRadius(15)
                     .border(Color(uiColor: .secondarySystemBackground), width: 1)
                     .focused($focusedField, equals: .description)

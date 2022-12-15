@@ -25,7 +25,6 @@ struct ProductAddView: View {
     
     @State private var showingImagePicker = false
     @State private var pickedImage: Image?
-    @State private var imageArray: [UIImage] = []
     
     @FocusState private var focusedField: Field?
 
@@ -34,8 +33,8 @@ struct ProductAddView: View {
             ScrollView(.horizontal) {
                 HStack {
                     if productAddViewModel.detailImageArray.count == 0 {
-                        ForEach(0..<imageArray.count, id: \.self) { images in
-                            Image(uiImage: imageArray[images])
+                        ForEach(0..<productAddViewModel.imageArray.count, id: \.self) { images in
+                            Image(uiImage: productAddViewModel.imageArray[images])
                                 .resizable()
                                 .frame(width: 150, height:150)
                         }
@@ -58,7 +57,7 @@ struct ProductAddView: View {
                         }
                     }
                     
-                    if imageArray.count < 5 || productAddViewModel.detailImageArray.count < 5 {
+                    if productAddViewModel.imageArray.count < 5 || productAddViewModel.detailImageArray.count < 5 {
                         Button(action: {
                             self.showingImagePicker.toggle()
                         }, label: {
@@ -68,7 +67,7 @@ struct ProductAddView: View {
                             
                         }).sheet(isPresented: $showingImagePicker) {
                             ImagePicker(sourceType: .photoLibrary) { (image) in
-                                imageArray.append(image)
+                                productAddViewModel.imageArray.append(image)
                             }
                         }
                     }
@@ -134,7 +133,7 @@ struct ProductAddView: View {
                 Button("Done") {
                     if item != nil {
                         productAddViewModel.patch(id: item?.id ?? 0,
-                                                  image: imageArray,
+                                                  image: productAddViewModel.imageArray,
                                                   name: productAddViewModel.title,
                                                   descriptions: productAddViewModel.description,
                                                   price: Int(productAddViewModel.price) ?? 0,
@@ -143,14 +142,7 @@ struct ProductAddView: View {
                                                   stock: Int(productAddViewModel.stock) ?? 0
                         )
                     } else {
-                        productAddViewModel.post(image: imageArray,
-                                                 name: productAddViewModel.title,
-                                                 descriptions: productAddViewModel.description,
-                                                 price: Int(productAddViewModel.price) ?? 0,
-                                                 currency: productAddViewModel.currency.rawValue,
-                                                 discountPrice: Int(productAddViewModel.discountedPrice) ?? 0,
-                                                 stock: Int(productAddViewModel.stock) ?? 0
-                        )
+                        productAddViewModel.post()
                     }
                 }
             }

@@ -12,6 +12,7 @@ final class ProductAddViewModel: ObservableObject {
     
     private let productAPI = ProductAPI()
     
+    @Published var imageArray: [UIImage] = []
     @Published var detailImageArray: [DetailImage] = []
     @Published var title: String = ""
     @Published var currency = Currency.KRW
@@ -47,6 +48,7 @@ final class ProductAddViewModel: ObservableObject {
     @Published var isPatchFail: Bool = false
     
     func fetch(item: DetailProduct) {
+        
         detailImageArray = item.images
         title = item.name
         price = item.price.removeDecimal
@@ -56,16 +58,11 @@ final class ProductAddViewModel: ObservableObject {
         description = item.welcomeDescription
     }
     
-    func post(image: [UIImage], name: String, descriptions: String, price: Int, currency: String, discountPrice: Int, stock: Int) {
-        let parameters =
-        [
-            "key": "params",
-            "value": "{ \"name\": \"\(name)\", \"description\": \"\(descriptions)\", \"price\": \(price), \"currency\": \"\(currency)\", \"discounted_price\": \(discountPrice), \"stock\": \(stock), \"secret\": \"\(VendorInfo.secret)\" }",
-            "type": "text",
-            "contentType": "application/json"
-        ] as [String : Any]
+    func post() {
         
-        productAPI.postProduct(images: image, parameters: parameters) { response in
+        let params = convertProductInfo()
+
+        productAPI.postProduct(images: imageArray, parameters: params) { response in
             switch response {
             case .success(let data):
                 print(data)
@@ -102,5 +99,25 @@ final class ProductAddViewModel: ObservableObject {
                 self.isPatchFail = true
             }
         }
+    }
+    
+    private func convertProductInfo() -> String {
+        
+        let productInfo = ProductInfo(
+            name: title,
+            description: description,
+            price: Int(price) ?? 0,
+            currency: currency.rawValue,
+            discountedPrice: Int(discountedPrice) ?? 0,
+            stock: Int(stock) ?? 0,
+            secret: VendorInfo.secret
+        )
+        
+        guard let value = try? JSONEncoder().encode(productInfo),
+              let jsonValue = String.init(data: value, encoding: .utf8) else {
+            return ""
+        }
+        
+        return jsonValue
     }
 }

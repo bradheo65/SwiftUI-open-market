@@ -61,7 +61,7 @@ final class ProductAPI {
         }
     }
     
-    func postProduct(images: [UIImage], parameters: [String : Any], completion: @escaping (Result<Data, Error>) -> Void) {
+    func postProduct(images: [UIImage], parameters: String, completion: @escaping (Result<Data, Error>) -> Void) {
         
         let urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
         
@@ -71,12 +71,9 @@ final class ProductAPI {
         ]
         
         AF.upload(multipartFormData: { multipartFormData in
-            for (key, value) in parameters {
-                if key == "value" {
-                    multipartFormData.append("\(value)".data(using: .utf8)!, withName: "params", mimeType: "application/json")
-                }
-            }
-            
+
+            multipartFormData.append("\(parameters)".data(using: .utf8)!, withName: "params", mimeType: "application/json")
+              
             for image in images {
                 let imageData: Data = image.jpegData(compressionQuality: 0.1)!
 

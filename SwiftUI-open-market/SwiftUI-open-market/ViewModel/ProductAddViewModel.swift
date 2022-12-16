@@ -74,22 +74,22 @@ final class ProductAddViewModel: ObservableObject {
         }
     }
     
-    func patch(id: Int, image: [UIImage], name: String, descriptions: String, price: Int, currency: String, discountPrice: Int, stock: Int) {
+    func patch(id: Int) {
         
         let parameters =
         [
-            "identifier": VendorInfo.identifier,
+            "identifier" : VendorInfo.identifier,
             "product_id": id,
-            "name": name,
-            "description": descriptions,
-            "price": price,
-            "currency": currency,
-            "discounted_price": discountPrice,
-            "stock": stock,
+            "name": title,
+            "description": description,
+            "price": Int(price) ?? 0,
+            "currency": currency.rawValue,
+            "discounted_price": Int(discountedPrice) ?? 0,
+            "stock": Int(stock) ?? 0,
             "secret": VendorInfo.secret
         ] as [String : Any]
         
-        productAPI.patchProduct(id: id, images: image, parameters: parameters) { response in
+        productAPI.patchProduct(id: id, images: imageArray, parameters: parameters) { response in
             switch response {
             case .success(let data):
                 print(data)
@@ -114,7 +114,7 @@ final class ProductAddViewModel: ObservableObject {
         )
         
         guard let value = try? JSONEncoder().encode(productInfo),
-              let jsonValue = String.init(data: value, encoding: .utf8) else {
+              let jsonValue = String(data: value, encoding: .utf8) else {
             return ""
         }
         

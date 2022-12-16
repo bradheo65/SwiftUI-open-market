@@ -132,15 +132,7 @@ struct ProductAddView: View {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button("Done") {
                     if item != nil {
-                        productAddViewModel.patch(id: item?.id ?? 0,
-                                                  image: productAddViewModel.imageArray,
-                                                  name: productAddViewModel.title,
-                                                  descriptions: productAddViewModel.description,
-                                                  price: Int(productAddViewModel.price) ?? 0,
-                                                  currency: productAddViewModel.currency.rawValue,
-                                                  discountPrice: Int(productAddViewModel.discountedPrice) ?? 0,
-                                                  stock: Int(productAddViewModel.stock) ?? 0
-                        )
+                        productAddViewModel.patch(id: item?.id ?? 0)
                     } else {
                         productAddViewModel.post()
                     }

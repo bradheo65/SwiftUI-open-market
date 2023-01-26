@@ -17,29 +17,6 @@ final class ProductAPI {
         static let deletePath = "archived"
     }
     
-    func getProduct(page: Int, size: Int, completion: @escaping (Bool, ProductListResponse?) -> Void) {
-        var urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
-
-        let pageNo = URLQueryItem(name: OpenMarketAPI.pageNo, value: "\(page)")
-        let itemPerPage = URLQueryItem(name: OpenMarketAPI.itemsPerPage, value: "\(size)")
-
-        urlComponents?.queryItems = [pageNo, itemPerPage]
-        
-        AF.request(urlComponents?.string ?? "",
-                   method: .get,
-                   parameters: nil,
-                   encoding: URLEncoding.default,
-                   headers: ["Content-Type":"application/json"])
-        .responseDecodable(of: ProductListResponse.self) { response in
-            switch response.result {
-            case .success(let response):
-                completion(true, response)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
     func getProductDetail(id: Int, completion: @escaping (Bool, DetailProduct?) -> Void) {
         var urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
         

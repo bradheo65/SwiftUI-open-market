@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductListView: View {
     
-    @ObservedObject private var productListViewModel = ProductListViewModel()
+    @StateObject private var productListViewModel = ProductListViewModel()
 
     @State private var showAddView = false
 
@@ -20,16 +20,16 @@ struct ProductListView: View {
                     ProductListCellView(data: data)
                         .task {
                             if data == productListViewModel.lists.last {
-                                await productListViewModel.getProduct()
+                                productListViewModel.fetchMarketProductList()
                             }
                         }
                 })
             }
             .task {
-                productListViewModel.getProduct()
+                productListViewModel.fetchMarketProductList()
             }
             .refreshable(action: {
-                productListViewModel.getProduct()
+                productListViewModel.fetchMarketProductList()
             })
             .navigationTitle("Open Market")
             .toolbar {

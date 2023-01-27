@@ -8,15 +8,7 @@
 import Foundation
 
 final class MarketProductListRepository: MarketProductListRepositoryInterface {
-    
-    private enum OpenMarketAPI {
-        static let url = "https://openmarket.yagom-academy.kr"
-        static let products = "/api/products"
-        static let pageNo = "page_no"
-        static let itemsPerPage = "items_per_page"
-        static let deletePath = "archived"
-    }
-    
+
     private let networkService = NetworkService.shared
     
     func fetchMarketList(page: Int, size: Int, completion: @escaping (Result<ProductListResponse, Error>) -> Void) {

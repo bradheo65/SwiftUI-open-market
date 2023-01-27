@@ -21,9 +21,7 @@ final class ProductListViewModel: ObservableObject {
         
         fetchMarketListUseCase.excute(page: page, size: size) { result in
             switch result {
-            case .success(let productList):
-                print(productList)
-                
+            case .success(let productList):                
                 DispatchQueue.main.async {
                     self.lists = productList.pages
                 }

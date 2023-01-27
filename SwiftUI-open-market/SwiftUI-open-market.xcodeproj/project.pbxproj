@@ -16,8 +16,16 @@
 		A3436385297E492C00EB58D7 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3436384297E492C00EB58D7 /* Cancellable.swift */; };
 		A34363892982112000EB58D7 /* FetchMarketListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34363882982112000EB58D7 /* FetchMarketListUseCase.swift */; };
 		A343638C2982124400EB58D7 /* MarketProductListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A343638B2982124400EB58D7 /* MarketProductListRepositoryInterface.swift */; };
-		A343638F2982154A00EB58D7 /* MarketProductListRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A343638E2982154A00EB58D7 /* MarketProductListRepositories.swift */; };
+		A343638F2982154A00EB58D7 /* MarketProductListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A343638E2982154A00EB58D7 /* MarketProductListRepository.swift */; };
 		A34363922982381000EB58D7 /* ProductListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34363912982381000EB58D7 /* ProductListResponseDTO.swift */; };
+		A34363952982A95800EB58D7 /* MarketProductDetailRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34363942982A95800EB58D7 /* MarketProductDetailRepositoryInterface.swift */; };
+		A34363972982A9D300EB58D7 /* FetchProductDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34363962982A9D300EB58D7 /* FetchProductDetailUseCase.swift */; };
+		A34363992982AA3800EB58D7 /* MarketProductDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34363982982AA3800EB58D7 /* MarketProductDetailRepository.swift */; };
+		A343639B2982AB1200EB58D7 /* DetailProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A343639A2982AB1200EB58D7 /* DetailProductDTO.swift */; };
+		A343639D2982B63200EB58D7 /* MarketProductDeleteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A343639C2982B63200EB58D7 /* MarketProductDeleteRepository.swift */; };
+		A343639F2982B79F00EB58D7 /* DeleteProductUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A343639E2982B79F00EB58D7 /* DeleteProductUseCase.swift */; };
+		A34363A12982B7DA00EB58D7 /* MarketProductDeleteRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34363A02982B7DA00EB58D7 /* MarketProductDeleteRepositoryInterface.swift */; };
+		A34363A5298365B000EB58D7 /* OpenMarketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34363A4298365B000EB58D7 /* OpenMarketAPI.swift */; };
 		A348D0A12925F278003E8BCB /* SwiftUI_open_marketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0A02925F278003E8BCB /* SwiftUI_open_marketApp.swift */; };
 		A348D0A32925F278003E8BCB /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0A22925F278003E8BCB /* ProductListView.swift */; };
 		A348D0A52925F279003E8BCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A348D0A42925F279003E8BCB /* Assets.xcassets */; };
@@ -51,8 +59,16 @@
 		A3436384297E492C00EB58D7 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		A34363882982112000EB58D7 /* FetchMarketListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMarketListUseCase.swift; sourceTree = "<group>"; };
 		A343638B2982124400EB58D7 /* MarketProductListRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductListRepositoryInterface.swift; sourceTree = "<group>"; };
-		A343638E2982154A00EB58D7 /* MarketProductListRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductListRepositories.swift; sourceTree = "<group>"; };
+		A343638E2982154A00EB58D7 /* MarketProductListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductListRepository.swift; sourceTree = "<group>"; };
 		A34363912982381000EB58D7 /* ProductListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListResponseDTO.swift; sourceTree = "<group>"; };
+		A34363942982A95800EB58D7 /* MarketProductDetailRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductDetailRepositoryInterface.swift; sourceTree = "<group>"; };
+		A34363962982A9D300EB58D7 /* FetchProductDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProductDetailUseCase.swift; sourceTree = "<group>"; };
+		A34363982982AA3800EB58D7 /* MarketProductDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductDetailRepository.swift; sourceTree = "<group>"; };
+		A343639A2982AB1200EB58D7 /* DetailProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductDTO.swift; sourceTree = "<group>"; };
+		A343639C2982B63200EB58D7 /* MarketProductDeleteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductDeleteRepository.swift; sourceTree = "<group>"; };
+		A343639E2982B79F00EB58D7 /* DeleteProductUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteProductUseCase.swift; sourceTree = "<group>"; };
+		A34363A02982B7DA00EB58D7 /* MarketProductDeleteRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductDeleteRepositoryInterface.swift; sourceTree = "<group>"; };
+		A34363A4298365B000EB58D7 /* OpenMarketAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMarketAPI.swift; sourceTree = "<group>"; };
 		A348D09D2925F278003E8BCB /* SwiftUI-open-market.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-open-market.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A348D0A02925F278003E8BCB /* SwiftUI_open_marketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_open_marketApp.swift; sourceTree = "<group>"; };
 		A348D0A22925F278003E8BCB /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
@@ -136,13 +152,13 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		A3436365297D275600EB58D7 /* Edit */ = {
+		A3436365297D275600EB58D7 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
 				A3436370297D2B5C00EB58D7 /* ViewModel */,
 				A343636F297D2B5600EB58D7 /* View */,
 			);
-			path = Edit;
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		A3436366297D276300EB58D7 /* Create */ = {
@@ -204,8 +220,8 @@
 		A343636C297D299C00EB58D7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A3436374297D2E4B00EB58D7 /* ProductListCellViewModel.swift */,
 				A348D0B62925F9E8003E8BCB /* ProductListViewModel.swift */,
+				A3436374297D2E4B00EB58D7 /* ProductListCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -258,7 +274,7 @@
 			children = (
 				A3436364297D273100EB58D7 /* List */,
 				A3436366297D276300EB58D7 /* Create */,
-				A3436365297D275600EB58D7 /* Edit */,
+				A3436365297D275600EB58D7 /* Detail */,
 			);
 			path = OpenMarket;
 			sourceTree = "<group>";
@@ -276,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				A3436380297E46A500EB58D7 /* NetworkService.swift */,
+				A34363A22983656D00EB58D7 /* Utills */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -300,6 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				A34363882982112000EB58D7 /* FetchMarketListUseCase.swift */,
+				A34363962982A9D300EB58D7 /* FetchProductDetailUseCase.swift */,
+				A343639E2982B79F00EB58D7 /* DeleteProductUseCase.swift */,
 			);
 			path = "Open-market";
 			sourceTree = "<group>";
@@ -308,6 +327,8 @@
 			isa = PBXGroup;
 			children = (
 				A343638B2982124400EB58D7 /* MarketProductListRepositoryInterface.swift */,
+				A34363942982A95800EB58D7 /* MarketProductDetailRepositoryInterface.swift */,
+				A34363A02982B7DA00EB58D7 /* MarketProductDeleteRepositoryInterface.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -315,7 +336,9 @@
 		A343638D2982151B00EB58D7 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				A343638E2982154A00EB58D7 /* MarketProductListRepositories.swift */,
+				A343638E2982154A00EB58D7 /* MarketProductListRepository.swift */,
+				A34363982982AA3800EB58D7 /* MarketProductDetailRepository.swift */,
+				A343639C2982B63200EB58D7 /* MarketProductDeleteRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -324,8 +347,26 @@
 			isa = PBXGroup;
 			children = (
 				A34363912982381000EB58D7 /* ProductListResponseDTO.swift */,
+				A343639A2982AB1200EB58D7 /* DetailProductDTO.swift */,
 			);
 			path = DTOs;
+			sourceTree = "<group>";
+		};
+		A34363A22983656D00EB58D7 /* Utills */ = {
+			isa = PBXGroup;
+			children = (
+				A34363A32983657C00EB58D7 /* Enum */,
+			);
+			path = Utills;
+			sourceTree = "<group>";
+		};
+		A34363A32983657C00EB58D7 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				A3E89958292C516E00FA1CCD /* VendorInfo.swift */,
+				A34363A4298365B000EB58D7 /* OpenMarketAPI.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		A348D0942925F278003E8BCB = {
@@ -390,7 +431,6 @@
 		A3E89957292C515A00FA1CCD /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				A3E89958292C516E00FA1CCD /* VendorInfo.swift */,
 				A35E368C2934CD7C0007E4D3 /* Currency.swift */,
 			);
 			path = Enum;
@@ -514,11 +554,13 @@
 				A35E368D2934CD7C0007E4D3 /* Currency.swift in Sources */,
 				A348D0B02925F442003E8BCB /* ProductListResponse.swift in Sources */,
 				A3E899492928EA2C00FA1CCD /* ProductDetailView.swift in Sources */,
-				A343638F2982154A00EB58D7 /* MarketProductListRepositories.swift in Sources */,
+				A343638F2982154A00EB58D7 /* MarketProductListRepository.swift in Sources */,
 				A377768B29476C490068E616 /* Extension+View.swift in Sources */,
+				A34363992982AA3800EB58D7 /* MarketProductDetailRepository.swift in Sources */,
 				A3436381297E46A500EB58D7 /* NetworkService.swift in Sources */,
 				A377766D29446FC20068E616 /* ProductListCellView.swift in Sources */,
 				A343638C2982124400EB58D7 /* MarketProductListRepositoryInterface.swift in Sources */,
+				A343639F2982B79F00EB58D7 /* DeleteProductUseCase.swift in Sources */,
 				A31B1756293A1F65004137AE /* Extension+String.swift in Sources */,
 				A3E89953292A04F200FA1CCD /* ProductAddViewModel.swift in Sources */,
 				A348D0B22925F482003E8BCB /* Product.swift in Sources */,
@@ -526,6 +568,9 @@
 				A3436375297D2E4B00EB58D7 /* ProductListCellViewModel.swift in Sources */,
 				A35E36872934CCE50007E4D3 /* DetailImage.swift in Sources */,
 				A3436385297E492C00EB58D7 /* Cancellable.swift in Sources */,
+				A343639B2982AB1200EB58D7 /* DetailProductDTO.swift in Sources */,
+				A343639D2982B63200EB58D7 /* MarketProductDeleteRepository.swift in Sources */,
+				A34363972982A9D300EB58D7 /* FetchProductDetailUseCase.swift in Sources */,
 				A34363892982112000EB58D7 /* FetchMarketListUseCase.swift in Sources */,
 				A348D0B72925F9E8003E8BCB /* ProductListViewModel.swift in Sources */,
 				A34363922982381000EB58D7 /* ProductListResponseDTO.swift in Sources */,
@@ -533,9 +578,12 @@
 				A377766729442DC10068E616 /* CacheAsyncImage.swift in Sources */,
 				A3E899472928E87900FA1CCD /* ProductDetailViewModel.swift in Sources */,
 				A35E36892934CD070007E4D3 /* Vendors.swift in Sources */,
+				A34363A12982B7DA00EB58D7 /* MarketProductDeleteRepositoryInterface.swift in Sources */,
 				A348D0A32925F278003E8BCB /* ProductListView.swift in Sources */,
+				A34363A5298365B000EB58D7 /* OpenMarketAPI.swift in Sources */,
 				A3E89959292C516E00FA1CCD /* VendorInfo.swift in Sources */,
 				A3E899512929BC1300FA1CCD /* ImagePicker.swift in Sources */,
+				A34363952982A95800EB58D7 /* MarketProductDetailRepositoryInterface.swift in Sources */,
 				A348D0A12925F278003E8BCB /* SwiftUI_open_marketApp.swift in Sources */,
 				A3E8994B2928F36300FA1CCD /* DetailProduct.swift in Sources */,
 				A348D0B42925F668003E8BCB /* ProductAPI.swift in Sources */,

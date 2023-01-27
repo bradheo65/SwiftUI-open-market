@@ -96,7 +96,7 @@ struct ProductDetailView: View {
             }
         }
         .task {
-            productDetailViewModel.getProduct(id: item)
+            productDetailViewModel.fetchDetailProduct(id: item)
         }
         .padding()
         .navigationBarTitleDisplayMode(.inline)
@@ -130,7 +130,7 @@ struct ProductDetailView: View {
         }
         .alert("정말 삭제할까요?", isPresented: $showDeleteAlert) {
             Button("OK", role: .destructive) {
-                productDetailViewModel.deleteProduct(id: productDetailViewModel.getID())
+                productDetailViewModel.requestDeleteProduct(id: productDetailViewModel.getID())
             }
         }
         .alert("삭제가 완료되었습니다.", isPresented: $productDetailViewModel.isDeleteSuccess) {

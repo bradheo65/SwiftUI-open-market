@@ -9,47 +9,44 @@ import Foundation
 
 final class ProductDetailViewModel: ObservableObject {
     
-    private lazy var productAPI = ProductAPI()
+    private let fetchProductDetailUseCase = FetchProductDetailUseCase()
+    private let deleteProductUseCase = DeleteProductUseCase()
     
     @Published var item: DetailProduct?
     @Published var isDeleteSuccess: Bool = false
     @Published var isDeleteFail: Bool = false
 
-    func getProduct(id: Int) {
-        productAPI.getProductDetail(id: id) { isSuccess, model in
-            switch isSuccess {
-            case true:
-                self.item = model
-            case false:
-                print("error")
+    func fetchDetailProduct(id: Int) {
+        fetchProductDetailUseCase.excute(id: id) { result in
+            switch result {
+            case .success(let detailProduct):
+                DispatchQueue.main.async {
+                    self.item = detailProduct
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
     
-    func deleteProduct(id: Int) {
+    func requestDeleteProduct(id: Int) {
         let parameters =
         [
             "secret": VendorInfo.secret
         ] as [String : Any]
         
-        productAPI.requestDeleteProductURL(id: id, parameters: parameters) { response in
-            switch response {
+        deleteProductUseCase.excute(id: id, parmeters: parameters) { result in
+            switch result {
             case .success(let data):
-                let selecteURL = String(data: data, encoding: .utf8) ?? ""
-                let parsingURL = selecteURL.trimmingCharacters(in: ["="])
-
-                self.productAPI.deleteProduct(deleteURL: parsingURL) { response in
-                    switch response {
-                    case .success(let success):
-                        print(success)
-                        self.isDeleteSuccess = true
-                    case .failure(let failure):
-                        print(failure)
-                        self.isDeleteFail = true
-                    }
+                print(data)
+                DispatchQueue.main.async {
+                    self.isDeleteSuccess = true
                 }
             case .failure(let error):
-                print(error)
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.isDeleteFail = true
+                }
             }
         }
     }

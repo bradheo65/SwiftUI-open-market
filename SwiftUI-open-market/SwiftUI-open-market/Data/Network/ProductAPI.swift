@@ -16,28 +16,7 @@ final class ProductAPI {
         static let itemsPerPage = "items_per_page"
         static let deletePath = "archived"
     }
-    
-    func getProductDetail(id: Int, completion: @escaping (Bool, DetailProduct?) -> Void) {
-        var urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
-        
-        urlComponents?.path += "/"
-        urlComponents?.path += "\(id)"
-                
-        AF.request(urlComponents?.string ?? "",
-                   method: .get,
-                   parameters: nil,
-                   encoding: URLEncoding.default,
-                   headers: ["Content-Type":"application/json"])
-        .responseDecodable(of: DetailProduct.self) { response in
-            switch response.result {
-            case .success(let response):
-                completion(true, response)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
+
     func postProduct(images: [UIImage], parameters: String, completion: @escaping (Result<Data, Error>) -> Void) {
         
         let urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
@@ -85,55 +64,6 @@ final class ProductAPI {
                    method: .patch,
                    parameters: parameters,
                    encoding: JSONEncoding.default,
-                   headers: header)
-        .responseData { response in
-            switch response.result {
-            case .success(let data):
-                completion(.success(data))
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    func requestDeleteProductURL(id: Int, parameters: [String : Any], completion: @escaping (Result<Data, Error>) -> Void) {
-        
-        var urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
-        
-        urlComponents?.path += "/"
-        urlComponents?.path += "\(id)"
-        urlComponents?.path += "/"
-        urlComponents?.path += "\(OpenMarketAPI.deletePath)"
-        
-        let header: HTTPHeaders = [
-            "identifier": VendorInfo.identifier
-        ]
-
-        AF.request(urlComponents?.string ?? "",
-                   method: .post,
-                   parameters: parameters,
-                   encoding: JSONEncoding.default,
-                   headers: header)
-        .responseData { response in
-            switch response.result {
-            case .success(let data):
-                completion(.success(data))
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    func deleteProduct(deleteURL: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        
-        let urlComponents = URLComponents(string: OpenMarketAPI.url + deleteURL)
-        
-        let header: HTTPHeaders = [
-            "identifier": VendorInfo.identifier
-        ]
-
-        AF.request(urlComponents?.string ?? "",
-                   method: .delete,
                    headers: header)
         .responseData { response in
             switch response.result {

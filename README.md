@@ -28,7 +28,7 @@ e-commerce iOS 앱 프로젝트 입니다.
 - GET
 - POST
     - multpart/form-data
-- Patch
+- PATCH
 - DELETE
 
 

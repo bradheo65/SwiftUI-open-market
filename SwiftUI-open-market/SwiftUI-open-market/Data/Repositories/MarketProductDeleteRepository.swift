@@ -11,11 +11,9 @@ final class MarketProductDeleteRepository: MarketProductDeleteRepositoryInterfac
     
     private let networkService = NetworkService.shared
     
-    func requestDeleteProductURL(id: Int, parameters: [String : Any], completion: @escaping (Result<Data, Error>) -> Void) {
+    func requestDeleteProductURL(id: Int, parameters: Data, completion: @escaping (Result<Data, Error>) -> Void) {
         var urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
         
-        let requestBody = try! JSONSerialization.data(withJSONObject: parameters, options: [])
-
         urlComponents?.path += "/"
         urlComponents?.path += "\(id)"
         urlComponents?.path += "/"
@@ -31,7 +29,7 @@ final class MarketProductDeleteRepository: MarketProductDeleteRepositoryInterfac
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         urlRequest.httpMethod = "POST"
-        urlRequest.httpBody = requestBody
+        urlRequest.httpBody = parameters
         
         let dataTask = networkService.dataTask(request: urlRequest) { result in
             switch result {

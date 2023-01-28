@@ -9,7 +9,7 @@ import Foundation
 
 protocol MarketProductDeleteRepositoryInterface {
     
-    func requestDeleteProductURL(id: Int, parameters: [String : Any], completion: @escaping (Result<Data, Error>) -> Void)
+    func requestDeleteProductURL(id: Int, parameters: Data, completion: @escaping (Result<Data, Error>) -> Void)
     
     func deleteProduct(deleteURL: String, completion: @escaping (Result<Data, Error>) -> Void)
     

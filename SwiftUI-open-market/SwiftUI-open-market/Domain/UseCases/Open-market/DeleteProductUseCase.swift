@@ -15,7 +15,7 @@ final class DeleteProductUseCase {
         self.repository = repository
     }
     
-    func excute(id: Int, parmeters: [String: Any], completion: @escaping (Result<Data, Error>) -> Void) {
+    func excute(id: Int, parmeters: Data, completion: @escaping (Result<Data, Error>) -> Void) {
         repository.requestDeleteProductURL(id: id, parameters: parmeters) { result in
             switch result {
             case .success(let data):

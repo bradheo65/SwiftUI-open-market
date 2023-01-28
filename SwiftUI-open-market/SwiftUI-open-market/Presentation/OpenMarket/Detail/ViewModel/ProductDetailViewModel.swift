@@ -35,7 +35,11 @@ final class ProductDetailViewModel: ObservableObject {
             "secret": VendorInfo.secret
         ] as [String : Any]
         
-        deleteProductUseCase.excute(id: id, parmeters: parameters) { result in
+        guard let value = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
+            return
+        }
+        
+        deleteProductUseCase.excute(id: id, parmeters: value) { result in
             switch result {
             case .success(let data):
                 print(data)

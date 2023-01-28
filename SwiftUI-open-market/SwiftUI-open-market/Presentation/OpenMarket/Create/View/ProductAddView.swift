@@ -134,7 +134,7 @@ struct ProductAddView: View {
                     if item != nil {
                         productAddViewModel.patch(id: item?.id ?? 0)
                     } else {
-                        productAddViewModel.post()
+                        productAddViewModel.requestPostProductItem()
                     }
                 }
             }

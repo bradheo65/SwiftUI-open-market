@@ -3,7 +3,7 @@
 ## 🙋🏻‍♂️ 프로젝트 소개
 이커머스 오픈마켓 앱 프로젝트 입니다.
 
-> 프로젝트 기간: 2022-11-18 ~ 2022-11-25</br>
+> 프로젝트 기간: 2022-12-06 ~~ </br>
 > 팀원:  [브래드](https://github.com/bradheo65) </br>
 
 ## 📑 목차
@@ -27,52 +27,91 @@
 ## 📑 파일 구조    
 
 ```
-.
-.
-├── Assets.xcassets
-│   ├── AccentColor.colorset
-│   │   └── Contents.json
-│   ├── AppIcon.appiconset
-│   │   └── Contents.json
-│   ├── Contents.json
-│   └── Image.imageset
-│       ├── Contents.json
-│       └── TestImage.png
-├── Cache
-│   └── CacheAsyncImage.swift
-├── Enum
-│   ├── Currency.swift
-│   └── VendorInfo.swift
-├── Extension
-│   ├── Extension+Double.swift
-│   └── Extension+String.swift
-├── Model
-│   ├── API
-│   │   └── ProductAPI.swift
-│   ├── DetailProduct
-│   │   ├── DetailImage.swift
-│   │   ├── DetailProduct.swift
-│   │   └── Vendors.swift
-│   ├── ImageFile.swift
-│   └── Product
-│       ├── Product.swift
-│       └── ProductListResponse.swift
+├── Common
+│   └── Cancellable.swift
+├── Data
+│   ├── DTOs
+│   │   ├── DetailProductDTO.swift
+│   │   └── ProductListResponseDTO.swift
+│   ├── Repositories
+│   │   ├── MarketProductDeleteRepository.swift
+│   │   ├── MarketProductDetailRepository.swift
+│   │   ├── MarketProductListRepository.swift
+│   │   ├── MarketProductPatchRepository.swift
+│   │   └── MarketProductPostRepository.swift
+│   └── Services
+│       ├── NetworkService.swift
+│       └── Utills
+│           └── Enum
+│               ├── OpenMarketAPI.swift
+│               └── VendorInfo.swift
+├── Domain
+│   ├── Entities
+│   │   ├── DetailProduct
+│   │   │   ├── DetailImage.swift
+│   │   │   ├── DetailProduct.swift
+│   │   │   └── Vendors.swift
+│   │   └── Product
+│   │       ├── PatchProductInfo.swift
+│   │       ├── Product.swift
+│   │       ├── ProductInfo.swift
+│   │       └── ProductListResponse.swift
+│   ├── RepositoryInterface
+│   │   ├── MarketProductDeleteRepositoryInterface.swift
+│   │   ├── MarketProductDetailRepositoryInterface.swift
+│   │   ├── MarketProductListRepositoryInterface.swift
+│   │   ├── MarketProductPatchRepositoryInterface.swift
+│   │   └── MarketProductPostRepositoryInterface.swift
+│   └── UseCases
+│       └── Open-market
+│           ├── DeleteProductUseCase.swift
+│           ├── FetchMarketListUseCase.swift
+│           ├── FetchProductDetailUseCase.swift
+│           ├── PatchMarketProductUseCase.swift
+│           └── PostMarketProductUseCase.swift
+├── Presentation
+│   ├── OpenMarket
+│   │   ├── Create
+│   │   │   ├── View
+│   │   │   │   └── ProductAddView.swift
+│   │   │   └── ViewModel
+│   │   │       └── ProductAddViewModel.swift
+│   │   ├── Detail
+│   │   │   ├── View
+│   │   │   │   └── ProductDetailView.swift
+│   │   │   └── ViewModel
+│   │   │       └── ProductDetailViewModel.swift
+│   │   └── List
+│   │       ├── View
+│   │       │   ├── ProductListCellView.swift
+│   │       │   └── ProductListView.swift
+│   │       └── ViewModel
+│   │           ├── ProductListCellViewModel.swift
+│   │           └── ProductListViewModel.swift
+│   └── Utills
+│       ├── CacheAsyncImage.swift
+│       ├── Enum
+│       │   └── Currency.swift
+│       ├── Extensions
+│       │   ├── Extension+Double.swift
+│       │   ├── Extension+String.swift
+│       │   └── Extension+View.swift
+│       └── ImagePicker.swift
 ├── Preview Content
 │   └── Preview Assets.xcassets
 │       ├── Contents 2.json
 │       └── Contents.json
-├── SwiftUI_open_marketApp.swift
-├── View
-│   ├── ImagePicker.swift
-│   ├── ProductAddView.swift
-│   ├── ProductDetailView.swift
-│   ├── ProductListCellView.swift
-│   ├── ProductListCellViewModel.swift
-│   └── ProductListView.swift
-└── ViewModel
-    ├── ProductAddViewModel.swift
-    ├── ProductDetailViewModel.swift
-    └── ProductListViewModel.swift
+└── Resources
+    ├── Assets.xcassets
+    │   ├── AccentColor.colorset
+    │   │   └── Contents.json
+    │   ├── AppIcon.appiconset
+    │   │   └── Contents.json
+    │   ├── Contents.json
+    │   └── Image.imageset
+    │       ├── Contents.json
+    │       └── TestImage.png
+    └── SwiftUI_open_marketApp.swift
 ```
 
 ## 📱 동작 화면

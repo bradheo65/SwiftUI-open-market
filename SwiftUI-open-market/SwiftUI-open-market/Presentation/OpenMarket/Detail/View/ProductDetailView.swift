@@ -96,7 +96,7 @@ struct ProductDetailView: View {
             }
         }
         .task {
-            productDetailViewModel.fetchDetailProduct(id: item)
+            productDetailViewModel.requestFetchDetailProduct(id: item)
         }
         .padding()
         .navigationBarTitleDisplayMode(.inline)

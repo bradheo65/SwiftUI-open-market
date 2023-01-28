@@ -20,16 +20,16 @@ struct ProductListView: View {
                     ProductListCellView(data: data)
                         .task {
                             if data == productListViewModel.lists.last {
-                                productListViewModel.fetchMarketProductList()
+                                productListViewModel.requestFetchMarketProductList()
                             }
                         }
                 })
             }
             .task {
-                productListViewModel.fetchMarketProductList()
+                productListViewModel.requestFetchMarketProductList()
             }
             .refreshable(action: {
-                productListViewModel.fetchMarketProductList()
+                productListViewModel.requestFetchMarketProductList()
             })
             .navigationTitle("Open Market")
             .toolbar {

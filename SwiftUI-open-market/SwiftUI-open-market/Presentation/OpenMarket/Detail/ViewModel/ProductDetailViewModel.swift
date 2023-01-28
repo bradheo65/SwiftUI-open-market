@@ -16,7 +16,7 @@ final class ProductDetailViewModel: ObservableObject {
     @Published var isDeleteSuccess: Bool = false
     @Published var isDeleteFail: Bool = false
 
-    func fetchDetailProduct(id: Int) {
+    func requestFetchDetailProduct(id: Int) {
         fetchProductDetailUseCase.excute(id: id) { result in
             switch result {
             case .success(let detailProduct):

@@ -16,7 +16,7 @@ final class ProductListViewModel: ObservableObject {
     private var page = 1
     private var size = 20
     
-    func fetchMarketProductList() {
+    func requestFetchMarketProductList() {
         size += 5
         
         fetchMarketListUseCase.excute(page: page, size: size) { result in

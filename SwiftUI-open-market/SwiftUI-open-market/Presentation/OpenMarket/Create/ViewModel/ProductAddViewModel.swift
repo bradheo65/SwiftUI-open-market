@@ -89,8 +89,7 @@ final class ProductAddViewModel: ObservableObject {
         }
     }
     
-    func patch(id: Int) {
-        
+    func requestPatchProductItem(id: Int) {
         let patchProductInfo = PatchProductInfo(
             stock: Int(stock) ?? 0,
             productID: id,

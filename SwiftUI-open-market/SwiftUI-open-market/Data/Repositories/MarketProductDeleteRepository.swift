@@ -27,8 +27,8 @@ final class MarketProductDeleteRepository: MarketProductDeleteRepositoryInterfac
         
         var urlRequest = URLRequest(url: url)
 
-        urlRequest.addValue(VendorInfo.identifier, forHTTPHeaderField: "identifier")
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue(VendorInfo.identifier, forHTTPHeaderField: "identifier")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         urlRequest.httpMethod = "POST"
         urlRequest.httpBody = requestBody
@@ -55,7 +55,7 @@ final class MarketProductDeleteRepository: MarketProductDeleteRepositoryInterfac
         var urlRequest = URLRequest(url: url)
         
         urlRequest.httpMethod = "DELETE"
-        urlRequest.addValue(VendorInfo.identifier, forHTTPHeaderField: "identifier")
+        urlRequest.setValue(VendorInfo.identifier, forHTTPHeaderField: "identifier")
 
         let dataTask = networkService.dataTask(request: urlRequest) { result in
             switch result {

@@ -13,9 +13,6 @@ final class MarketProductPatchRepository: MarketProductPatchRepositoryInterface 
     private let networkService = NetworkService.shared
     
     func patchProduct(id: Int, parameters: Data, completion: @escaping (Result<DetailProduct, Error>) -> Void) {
-
-        let productBody = parameters
-
         var urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
         
         urlComponents?.path += "/"
@@ -31,6 +28,8 @@ final class MarketProductPatchRepository: MarketProductPatchRepositoryInterface 
         urlRequest.setValue(VendorInfo.identifier, forHTTPHeaderField: "identifier")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        let productBody = parameters
+
         urlRequest.httpBody = productBody
         
         let dataTask = networkService.dataTask(request: urlRequest) { result in

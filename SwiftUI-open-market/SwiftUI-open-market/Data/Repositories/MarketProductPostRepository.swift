@@ -19,7 +19,6 @@ final class MarketProductPostRepository: MarketProductPostRepositoryInterface {
     private let networkService = NetworkService.shared
     
     func postProduct(images: [UIImage], parameters: Data, completion: @escaping (Result<DetailProduct, Error>) -> Void) {
-        
         let urlComponents = URLComponents(string: OpenMarketAPI.url + OpenMarketAPI.products)
         
         guard let url = urlComponents?.url else {

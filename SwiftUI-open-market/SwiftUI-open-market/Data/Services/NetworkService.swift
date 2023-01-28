@@ -21,15 +21,15 @@ final class NetworkService {
                 return
             }
             
-//            guard self.isValidResponse(response) else {
-//                completion(.failure(error!))
-//                return
-//            }
-            
-            print(String(decoding: data!, as: UTF8.self))
-            guard let data = data else {
+            guard self.isValidResponse(response) else {
                 completion(.failure(error!))
                 return
+            }
+            
+            guard let data = data else {
+                completion(.failure(error!))
+                return print(String(decoding: data!, as: UTF8.self))
+
             }
             
             completion(.success(data))

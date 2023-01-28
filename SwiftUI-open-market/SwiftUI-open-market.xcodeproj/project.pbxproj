@@ -33,7 +33,6 @@
 		A348D0A82925F279003E8BCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A348D0A72925F279003E8BCB /* Preview Assets.xcassets */; };
 		A348D0B02925F442003E8BCB /* ProductListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0AF2925F442003E8BCB /* ProductListResponse.swift */; };
 		A348D0B22925F482003E8BCB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0B12925F482003E8BCB /* Product.swift */; };
-		A348D0B42925F668003E8BCB /* ProductAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0B32925F668003E8BCB /* ProductAPI.swift */; };
 		A348D0B72925F9E8003E8BCB /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A348D0B62925F9E8003E8BCB /* ProductListViewModel.swift */; };
 		A35E36872934CCE50007E4D3 /* DetailImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35E36862934CCE50007E4D3 /* DetailImage.swift */; };
 		A35E36892934CD070007E4D3 /* Vendors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35E36882934CD070007E4D3 /* Vendors.swift */; };
@@ -43,6 +42,10 @@
 		A377768B29476C490068E616 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A377768A29476C490068E616 /* Extension+View.swift */; };
 		A3A161E12984F05E009F34BD /* PostMarketProductUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A161E02984F05E009F34BD /* PostMarketProductUseCase.swift */; };
 		A3A161E32984F09B009F34BD /* MarketProductPostRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A161E22984F09B009F34BD /* MarketProductPostRepositoryInterface.swift */; };
+		A3A161E52984F7A2009F34BD /* MarketProductPatchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A161E42984F7A2009F34BD /* MarketProductPatchRepository.swift */; };
+		A3A161E72984F7E6009F34BD /* MarketProductPatchRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A161E62984F7E6009F34BD /* MarketProductPatchRepositoryInterface.swift */; };
+		A3A161E92984F972009F34BD /* PatchMarketProductUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A161E82984F972009F34BD /* PatchMarketProductUseCase.swift */; };
+		A3A161EB2984FB65009F34BD /* PatchProductInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A161EA2984FB65009F34BD /* PatchProductInfo.swift */; };
 		A3E899472928E87900FA1CCD /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E899462928E87900FA1CCD /* ProductDetailViewModel.swift */; };
 		A3E899492928EA2C00FA1CCD /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E899482928EA2C00FA1CCD /* ProductDetailView.swift */; };
 		A3E8994B2928F36300FA1CCD /* DetailProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8994A2928F36300FA1CCD /* DetailProduct.swift */; };
@@ -80,7 +83,6 @@
 		A348D0A72925F279003E8BCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A348D0AF2925F442003E8BCB /* ProductListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListResponse.swift; sourceTree = "<group>"; };
 		A348D0B12925F482003E8BCB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		A348D0B32925F668003E8BCB /* ProductAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAPI.swift; sourceTree = "<group>"; };
 		A348D0B62925F9E8003E8BCB /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
 		A35E36862934CCE50007E4D3 /* DetailImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImage.swift; sourceTree = "<group>"; };
 		A35E36882934CD070007E4D3 /* Vendors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendors.swift; sourceTree = "<group>"; };
@@ -90,6 +92,10 @@
 		A377768A29476C490068E616 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		A3A161E02984F05E009F34BD /* PostMarketProductUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMarketProductUseCase.swift; sourceTree = "<group>"; };
 		A3A161E22984F09B009F34BD /* MarketProductPostRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductPostRepositoryInterface.swift; sourceTree = "<group>"; };
+		A3A161E42984F7A2009F34BD /* MarketProductPatchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductPatchRepository.swift; sourceTree = "<group>"; };
+		A3A161E62984F7E6009F34BD /* MarketProductPatchRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProductPatchRepositoryInterface.swift; sourceTree = "<group>"; };
+		A3A161E82984F972009F34BD /* PatchMarketProductUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchMarketProductUseCase.swift; sourceTree = "<group>"; };
+		A3A161EA2984FB65009F34BD /* PatchProductInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchProductInfo.swift; sourceTree = "<group>"; };
 		A3E899462928E87900FA1CCD /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		A3E899482928EA2C00FA1CCD /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		A3E8994A2928F36300FA1CCD /* DetailProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProduct.swift; sourceTree = "<group>"; };
@@ -201,17 +207,8 @@
 				A34363902982379B00EB58D7 /* DTOs */,
 				A343638D2982151B00EB58D7 /* Repositories */,
 				A3436382297E48BC00EB58D7 /* Services */,
-				A343636A297D293000EB58D7 /* Network */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		A343636A297D293000EB58D7 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				A348D0B32925F668003E8BCB /* ProductAPI.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		A343636B297D299600EB58D7 /* View */ = {
@@ -324,6 +321,7 @@
 			children = (
 				A34363882982112000EB58D7 /* FetchMarketListUseCase.swift */,
 				A3A161E02984F05E009F34BD /* PostMarketProductUseCase.swift */,
+				A3A161E82984F972009F34BD /* PatchMarketProductUseCase.swift */,
 				A34363962982A9D300EB58D7 /* FetchProductDetailUseCase.swift */,
 				A343639E2982B79F00EB58D7 /* DeleteProductUseCase.swift */,
 			);
@@ -337,6 +335,7 @@
 				A34363942982A95800EB58D7 /* MarketProductDetailRepositoryInterface.swift */,
 				A34363A02982B7DA00EB58D7 /* MarketProductDeleteRepositoryInterface.swift */,
 				A3A161E22984F09B009F34BD /* MarketProductPostRepositoryInterface.swift */,
+				A3A161E62984F7E6009F34BD /* MarketProductPatchRepositoryInterface.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -346,6 +345,7 @@
 			children = (
 				A343638E2982154A00EB58D7 /* MarketProductListRepository.swift */,
 				A34363A62983662C00EB58D7 /* MarketProductPostRepository.swift */,
+				A3A161E42984F7A2009F34BD /* MarketProductPatchRepository.swift */,
 				A34363982982AA3800EB58D7 /* MarketProductDetailRepository.swift */,
 				A343639C2982B63200EB58D7 /* MarketProductDeleteRepository.swift */,
 			);
@@ -433,6 +433,7 @@
 				A3E8994A2928F36300FA1CCD /* DetailProduct.swift */,
 				A35E36862934CCE50007E4D3 /* DetailImage.swift */,
 				A35E36882934CD070007E4D3 /* Vendors.swift */,
+				A3A161EA2984FB65009F34BD /* PatchProductInfo.swift */,
 			);
 			path = DetailProduct;
 			sourceTree = "<group>";
@@ -565,6 +566,7 @@
 				A3E899492928EA2C00FA1CCD /* ProductDetailView.swift in Sources */,
 				A343638F2982154A00EB58D7 /* MarketProductListRepository.swift in Sources */,
 				A377768B29476C490068E616 /* Extension+View.swift in Sources */,
+				A3A161EB2984FB65009F34BD /* PatchProductInfo.swift in Sources */,
 				A34363992982AA3800EB58D7 /* MarketProductDetailRepository.swift in Sources */,
 				A3436381297E46A500EB58D7 /* NetworkService.swift in Sources */,
 				A377766D29446FC20068E616 /* ProductListCellView.swift in Sources */,
@@ -575,6 +577,7 @@
 				A3A161E12984F05E009F34BD /* PostMarketProductUseCase.swift in Sources */,
 				A348D0B22925F482003E8BCB /* Product.swift in Sources */,
 				A3339537294AF7E800EB43F1 /* ProductInfo.swift in Sources */,
+				A3A161E92984F972009F34BD /* PatchMarketProductUseCase.swift in Sources */,
 				A34363A72983662C00EB58D7 /* MarketProductPostRepository.swift in Sources */,
 				A3A161E32984F09B009F34BD /* MarketProductPostRepositoryInterface.swift in Sources */,
 				A3436375297D2E4B00EB58D7 /* ProductListCellViewModel.swift in Sources */,
@@ -583,7 +586,9 @@
 				A343639B2982AB1200EB58D7 /* DetailProductDTO.swift in Sources */,
 				A343639D2982B63200EB58D7 /* MarketProductDeleteRepository.swift in Sources */,
 				A34363972982A9D300EB58D7 /* FetchProductDetailUseCase.swift in Sources */,
+				A3A161E72984F7E6009F34BD /* MarketProductPatchRepositoryInterface.swift in Sources */,
 				A34363892982112000EB58D7 /* FetchMarketListUseCase.swift in Sources */,
+				A3A161E52984F7A2009F34BD /* MarketProductPatchRepository.swift in Sources */,
 				A348D0B72925F9E8003E8BCB /* ProductListViewModel.swift in Sources */,
 				A34363922982381000EB58D7 /* ProductListResponseDTO.swift in Sources */,
 				A3E8994E2929B57700FA1CCD /* ProductAddView.swift in Sources */,
@@ -598,7 +603,6 @@
 				A34363952982A95800EB58D7 /* MarketProductDetailRepositoryInterface.swift in Sources */,
 				A348D0A12925F278003E8BCB /* SwiftUI_open_marketApp.swift in Sources */,
 				A3E8994B2928F36300FA1CCD /* DetailProduct.swift in Sources */,
-				A348D0B42925F668003E8BCB /* ProductAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

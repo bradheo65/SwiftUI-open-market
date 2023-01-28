@@ -10,9 +10,9 @@ import SwiftUI
 
 final class ProductAddViewModel: ObservableObject {
     
-    private let productAPI = ProductAPI()
     private let postMarketProductUseCase = PostMarketProductUseCase()
-    
+    private let patchMarketProductUseCase = PatchMarketProductUseCase()
+
     @Published var imageArray: [UIImage] = []
     @Published var detailImageArray: [DetailImage] = []
     @Published var title: String = ""
@@ -59,7 +59,7 @@ final class ProductAddViewModel: ObservableObject {
     }
     
     func requestPostProductItem() {
-        let parmtersValue = ProductInfo(
+        let productInfo = ProductInfo(
             name: title,
             description: description,
             price: Int(price) ?? 0,
@@ -69,7 +69,7 @@ final class ProductAddViewModel: ObservableObject {
             secret: VendorInfo.secret
         )
         
-        guard let value = try? JSONEncoder().encode(parmtersValue) else {
+        guard let value = try? JSONEncoder().encode(productInfo) else {
             return
         }
         
@@ -91,26 +91,33 @@ final class ProductAddViewModel: ObservableObject {
     
     func patch(id: Int) {
         
-        let parameters =
-        [
-            "identifier" : VendorInfo.identifier,
-            "product_id": id,
-            "name": title,
-            "description": description,
-            "price": Int(price) ?? 0,
-            "currency": currency.rawValue,
-            "discounted_price": Int(discountedPrice) ?? 0,
-            "stock": Int(stock) ?? 0,
-            "secret": VendorInfo.secret
-        ] as [String : Any]
+        let patchProductInfo = PatchProductInfo(
+            stock: Int(stock) ?? 0,
+            productID: id,
+            name: title,
+            description: description,
+            discountedPrice: Int(discountedPrice) ?? 0,
+            price: Int(price) ?? 0,
+            currency: currency.rawValue,
+            secret: VendorInfo.secret
+        )
         
-        productAPI.patchProduct(id: id, images: imageArray, parameters: parameters) { response in
-            switch response {case .success(let data):
+        guard let value = try? JSONEncoder().encode(patchProductInfo) else {
+            return
+        }
+        
+        patchMarketProductUseCase.excute(id: id, parameters: value) { result in
+            switch result {
+            case .success(let data):
                 print(data)
-                self.isPatchSuccess = true
+                DispatchQueue.main.async {
+                    self.isPatchSuccess = true
+                }
             case .failure(let error):
-                print(error)
-                self.isPatchFail = true
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.isPatchFail = true
+                }
             }
         }
     }

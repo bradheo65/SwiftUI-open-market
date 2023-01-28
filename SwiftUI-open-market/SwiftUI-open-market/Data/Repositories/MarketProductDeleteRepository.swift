@@ -52,13 +52,12 @@ final class MarketProductDeleteRepository: MarketProductDeleteRepositoryInterfac
             return
         }
         
-        var urlRequest = try? URLRequest(url: url, method: .delete)
+        var urlRequest = URLRequest(url: url)
         
-        urlRequest?.headers = [
-            "identifier": VendorInfo.identifier
-        ]
-        
-        let dataTask = networkService.dataTask(request: urlRequest!) { result in
+        urlRequest.httpMethod = "DELETE"
+        urlRequest.addValue(VendorInfo.identifier, forHTTPHeaderField: "identifier")
+
+        let dataTask = networkService.dataTask(request: urlRequest) { result in
             switch result {
             case .success(let data):
                 completion(.success(data))
